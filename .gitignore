@@ -1,0 +1,79 @@
+# ---------------------------------------------------------------------------
+# SEKRETY — nigdy nie commitować
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+credentials.json
+
+# ---------------------------------------------------------------------------
+# Środowisko wirtualne / zależności
+# ---------------------------------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ---------------------------------------------------------------------------
+# Python — artefakty
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+.eggs/
+*.manifest
+*.spec
+
+# ---------------------------------------------------------------------------
+# Narzędzia / cache
+# ---------------------------------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.dmypy.json
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.ipynb_checkpoints/
+
+
+
+
+# Pliki tymczasowe / scratch
+scratch/
+tmp/
+*.tmp
+*.log
+
+# ---------------------------------------------------------------------------
+# IDE / edytory
+# ---------------------------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Claude Code — ustawienia lokalne (settings.json można wersjonować)
+.claude/settings.local.json
+
+# ---------------------------------------------------------------------------
+# System operacyjny
+# ---------------------------------------------------------------------------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store

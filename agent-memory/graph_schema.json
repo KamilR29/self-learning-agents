@@ -1,0 +1,83 @@
+{
+  "node_types": [
+    {
+      "label": "Client",
+      "description": "Klient banku (osoba lub firma)"
+    },
+    {
+      "label": "Application",
+      "description": "Wniosek kredytowy/produktowy (WN-...)"
+    },
+    {
+      "label": "Decision",
+      "description": "Decyzja kredytowa (DC-...)"
+    },
+    {
+      "label": "Contract",
+      "description": "Umowa / umowa kredytu/leasingu (UM-...)"
+    },
+    {
+      "label": "RepaymentSchedule",
+      "description": "Harmonogram spłat (HS-...)"
+    },
+    {
+      "label": "Regulation",
+      "description": "Regulamin produktu (REG-...)"
+    },
+    {
+      "label": "Policy",
+      "description": "Polityka wewnętrzna (POL-...)"
+    },
+    {
+      "label": "RateTable",
+      "description": "Tabela oprocentowania (TO-...)"
+    },
+    {
+      "label": "FeeTable",
+      "description": "Tabela opłat i prowizji (TOP-...)"
+    },
+    {
+      "label": "SAR",
+      "description": "Zgłoszenie transakcji podejrzanej (SAR-...)"
+    },
+    {
+      "label": "RiskReport",
+      "description": "Raport ryzyka klienta (RR-...)"
+    },
+    {
+      "label": "IncomeCertificate",
+      "description": "Zaświadczenie o dochodach (ZD-...)"
+    },
+    {
+      "label": "TransactionHistory",
+      "description": "Historia transakcji (HT-...)"
+    },
+    {
+      "label": "Account",
+      "description": "Rachunek bankowy / IBAN"
+    },
+    {
+      "label": "Property",
+      "description": "Nieruchomość lub przedmiot zabezpieczenia"
+    }
+  ],
+  "relationship_types": [
+    "CONCERNS_CLIENT",
+    "DECISION_FOR",
+    "REALIZES",
+    "ATTACHED_TO",
+    "APPLIES_POLICY",
+    "GOVERNED_BY",
+    "USES_RATE_TABLE",
+    "USES_FEE_TABLE",
+    "HAS_SCHEDULE",
+    "FILED_FOR",
+    "AGGREGATES",
+    "UPDATES_RISK",
+    "SECURED_BY",
+    "HAS_ACCOUNT",
+    "REFERENCES"
+  ],
+  "additional_node_types": true,
+  "additional_relationship_types": true
+}

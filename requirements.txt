@@ -1,0 +1,8 @@
+deepagents>=0.7.5
+langchain-openai>=1.4.0
+python-dotenv>=1.0.0
+
+# Pamięć grafowa GraphRAG (pakiet self_learning_agents) — opcjonalne w użyciu,
+# ale wymagane, jeśli chcesz korzystać z Neo4j / narzędzia graph_search.
+neo4j>=6.0
+neo4j-graphrag>=1.18

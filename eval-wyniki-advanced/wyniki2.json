@@ -1,0 +1,1288 @@
+{
+  "wyniki": [
+    {
+      "zestaw": "1",
+      "id": "P1.1",
+      "pytanie": "Jaki jest numer PESEL (testowy) klientki Anny Katarzyny Kowalskiej?",
+      "oczekiwana": "85072812345 (oznaczony jako testowy).",
+      "odpowiedz_agenta": "Numer PESEL (testowy) klientki Anna Katarzyna Kowalska to: 85072812345.\n\nŹródła: graf (potwierdzenie) oraz dokumenty KYC-00123, UM-7788, WN-4501, ZD-4501 (werdykt weryfikatora: POTWIERDZONA).\n\nZapis do grafu: fakt PESEL=85072812345 dla encji \"Anna Katarzyna Kowalska\" został zapisany i potwierdzony w grafie dnia 18.08.2026 z powyższymi źródłami.\n\nPewność: wysoka.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zawiera prawidłowy numer PESEL testowej klientki Anny Katarzyny Kowalskiej zgodny z odpowiedzią oczekiwaną.",
+      "zrodla_oczekiwane": [
+        "KYC-00123"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "KYC-00123",
+        "UM-7788",
+        "WN-4501",
+        "ZD-4501"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.2",
+      "pytanie": "Na jaką kwotę opiewa kredyt hipoteczny w umowie UM-7788?",
+      "oczekiwana": "480 000,00 PLN.",
+      "odpowiedz_agenta": "Kwota kredytu hipotecznego w umowie UM-7788 wynosi 480 000,00 PLN (źródło: UM-7788).\n\nPotwierdzam, że zweryfikowany fakt został zapisany do grafu wiedzy (node: UM-7788, fact_id: learned::a93a426d2cea181e).",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Kwota kredytu hipotecznego w umowie UM-7788 została podana zgodnie z oczekiwaną odpowiedzią.",
+      "zrodla_oczekiwane": [
+        "UM-7788"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "UM-7788"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.3",
+      "pytanie": "Ile wynosi miesięczna rata w harmonogramie HS-7788?",
+      "oczekiwana": "3 688,83 PLN (300 rat annuitetowych).",
+      "odpowiedz_agenta": "Miesięczna rata w harmonogramie HS-7788 wynosi 3 688,83 PLN (rata annuitetowa — równa). (źródła: HS-7788, UM-7788)\n\nUwaga: zweryfikowałem informację w dokumentach i zapisałem ten fakt do grafu wiedzy (HS-7788: miesięczna rata 3 688,83 PLN; typ raty: annuitetowe), aby w przyszłości odpowiedź była dostępna bez czytania dokumentów.",
+      "ocena": "czesciowa",
+      "uzasadnienie_oceny": "Agent podał poprawną kwotę raty oraz typ raty, ale pominął informację o liczbie rat (300) zawartą w odpowiedzi oczekiwanej.",
+      "zrodla_oczekiwane": [
+        "HS-7788"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "HS-7788",
+        "UM-7788"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.4",
+      "pytanie": "Jaki jest maksymalny standardowy wskaźnik LTV według polityki ryzyka kredytowego?",
+      "oczekiwana": "80% (standard; LTV 80–90% dopuszczalne wyjątkowo z dodatkowym zabezpieczeniem/ubezpieczeniem i wyższą marżą).",
+      "odpowiedz_agenta": "Maksymalny standardowy wskaźnik LTV wynosi 80%.  \n(źródło: POL-RYZYKO-01, §4; weryfikator: POTWIERDZONA)\n\nZapis do grafu wykonany: learned::34e90f6467e5e67d (fakt: \"Maksymalny standardowy wskaźnik LTV = 80%\", źródło POL-RYZYKO-01 §4).\n\nUwaga: podczas zapisu nie udało się dodać jakościowej wskazówki powiązanej z encją \"LTV\" z powodu błędu operacji — mogę spróbować ponownie, jeśli chcesz.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zgodnie ze standardowym limitem LTV 80% oraz uwzględnieniem wyjątków, choć nie wymienia ich szczegółowo, co odpowiada oczekiwanej odpowiedzi.",
+      "zrodla_oczekiwane": [
+        "POL-RYZYKO-01"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "POL-RYZYKO-01"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": false
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.5",
+      "pytanie": "Ile wynosi wartość wskaźnika NRR 3M w tabeli oprocentowania na I kwartał 2025?",
+      "oczekiwana": "5,85% w skali roku.",
+      "odpowiedz_agenta": "Wskaźnik NRR 3M w tabeli oprocentowania na I kwartał 2025 wynosi 5,85% rocznie (źródło: TO-2025-Q1). Zapis zweryfikowanego faktu do grafu został wykonany (fact_id: learned::740783a8160eb871).",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta podaje prawidłową wartość wskaźnika NRR 3M na I kwartał 2025, zgodną z odpowiedzią oczekiwaną.",
+      "zrodla_oczekiwane": [
+        "TO-2025-Q1"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "TO-2025-Q1"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.6",
+      "pytanie": "Jaka jest stawka prowizji przygotowawczej dla kredytu hipotecznego w tabeli opłat Q1 2025?",
+      "oczekiwana": "2,00% kwoty kredytu.",
+      "odpowiedz_agenta": "Stawka prowizji przygotowawczej dla kredytu hipotecznego w tabeli opłat Q1 2025 wynosi 2,00% (źródło: TO-2025-Q1; potwierdzenie: REG-KH-02, TOP-2025-Q1).\n\nZapis do grafu wykonany: fakt zapisano jako learned::f9e9b47dc1754fc4 (success: true).  \nWykorzystane źródła: TO-2025-Q1, REG-KH-02, TOP-2025-Q1.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta dokładnie podaje stawkę prowizji przygotowawczej jako 2,00%, zgodnie z odpowiedzią oczekiwaną.",
+      "zrodla_oczekiwane": [
+        "TOP-2025-Q1"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "REG-KH-02",
+        "TO-2025-Q1",
+        "TOP-2025-Q1"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.7",
+      "pytanie": "Kto jest beneficjentem rzeczywistym (UBO) spółki „Bursztyn Handel Sp. z o.o.\"?",
+      "oczekiwana": "Andrzej Lewiński — 100% udziałów.",
+      "odpowiedz_agenta": "Beneficjentem rzeczywistym (UBO) spółki „Bursztyn Handel Sp. z o.o.\" jest Andrzej Lewiński — posiada 100% udziałów i sprawuje kontrolę w formie bezpośredniego udziału (reprezentacja samodzielna / Prezes Zarządu). (źródła: WN-4587, KYC-00129, SAR-0052). \n\nZapis do grafu wiedzy wykonany: fakt UBO dodany (id faktu: learned::3b521fbe8183a4cd).",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zawiera wszystkie kluczowe informacje z odpowiedzi oczekiwanej, podając beneficjenta rzeczywistego i procent udziałów bez sprzeczności.",
+      "zrodla_oczekiwane": [
+        "KYC-00129"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "KYC-00129",
+        "SAR-0052",
+        "WN-4587"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.8",
+      "pytanie": "Jakie rozstrzygnięcie zapadło w decyzji kredytowej DC-2250?",
+      "oczekiwana": "Decyzja NEGATYWNA (odmowa udzielenia kredytu gotówkowego).",
+      "odpowiedz_agenta": "Decyzja kredytowa DC-2250 była negatywna (odrzucona). Powody: wysokie ryzyko klasy E oraz brak danych o źródle środków (KYC-00456 nieudostępniony) (źródło: DC-2250).\n\nSprawdzenie w grafie wykonane — fakty były w grafie i zostały potwierdzone oraz zapisane/zweryfikowane w grafie wiedzy pod DC-2250.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta prawidłowo wskazuje negatywne rozstrzygnięcie decyzji DC-2250, zgodnie z oczekiwanym odmową udzielenia kredytu.",
+      "zrodla_oczekiwane": [
+        "DC-2250"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2250",
+        "KYC-00456"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.9",
+      "pytanie": "Jaki limit kredytowy przyznano na karcie kredytowej w decyzji DC-2204?",
+      "oczekiwana": "15 000,00 PLN.",
+      "odpowiedz_agenta": "Limit kredytowy przyznany na karcie kredytowej w decyzji DC-2204 wynosi 15 000,00 PLN (źródło: DC-2204). Zapis do grafu wiedzy został wykonany (fact ID: learned::14f7ea5b1bce0541).",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zawiera dokładnie ten sam limit kredytowy 15 000,00 PLN, co odpowiedź oczekiwana.",
+      "zrodla_oczekiwane": [
+        "DC-2204"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2204"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.10",
+      "pytanie": "Ile wynosi minimalna kwota do zapłaty w cyklu rozliczeniowym karty kredytowej „Nordvik Karta\"?",
+      "oczekiwana": "5% zadłużenia, nie mniej niż 50 PLN.",
+      "odpowiedz_agenta": "Minimalna kwota do zapłaty w cyklu rozliczeniowym karty kredytowej \"Nordvik Karta\" wynosi 5% zadłużenia, nie mniej niż 50 PLN. (źródło: REG-KK-03)\n\nWeryfikacja: POTWIERDZONA — Regulamin produktu „Nordvik Karta” (REG-KK-03) §4 pkt 1, dokument z dnia 01.01.2025 potwierdza powyższe warunki.\n\nZapis do grafu: zweryfikowany fakt został zapisany w grafie jako produktowy fakt (product_term) — ID wpisu: learned::90ade2e4bbbac8f7. Dodatkowa wskazówka jakościowa zapisana w grafie: \"Sprawdzać aktualizacje regulaminu; minimalna spłata jest wyrażona procentowo i kwotowo — używać obu pól przy obliczeniach\".",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta jest kompletna i zgodna z oczekiwaniami, podając zarówno procent zadłużenia, jak i minimalną kwotę w PLN.",
+      "zrodla_oczekiwane": [
+        "REG-KK-03"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "REG-KK-03"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.11",
+      "pytanie": "Jak długi jest okres bezodsetkowy (grace period) karty kredytowej dla transakcji bezgotówkowych?",
+      "oczekiwana": "Do 56 dni (pod warunkiem spłaty całości zadłużenia w terminie).",
+      "odpowiedz_agenta": "Okres bezodsetkowy dla transakcji bezgotówkowych wynosi do 56 dni, pod warunkiem spłaty całości zadłużenia w terminie. Wypłaty gotówki nie są objęte tym okresem (odsetki naliczane od dnia transakcji). (źródła: REG-KK-03, DC-2204)\n\nDodatkowo:\n- Weryfikator potwierdził poprawność tej odpowiedzi (werdykt: POTWIERDZONA, potwierdzające źródło: REG-KK-03).\n- Fakt był już obecny w grafie wiedzy, więc nie było potrzeby zapisywania nowego wpisu.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta jest zgodna z odpowiedzią oczekiwaną, podając dokładny czas okresu bezodsetkowego oraz warunek jego obowiązywania, a dodatkowo precyzuje wyjątek dotyczący wypłat gotówki.",
+      "zrodla_oczekiwane": [
+        "REG-KK-03"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2204",
+        "REG-KK-03"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": false
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.12",
+      "pytanie": "Do jakiego podmiotu i jakiej jurysdykcji trafiały przelewy zagraniczne z rachunku w historii transakcji HT-00456?",
+      "oczekiwana": "Do „Vantia Global Trade LLC\" w Republice Vantia (jurysdykcja wysokiego ryzyka); łącznie ok. 464 950,00 PLN.",
+      "odpowiedz_agenta": "Przelewy zagraniczne z rachunku HT-00456 trafiały do podmiotu Vantia Global Trade LLC z siedzibą w Republice Vantia (jurysdykcja wysokiego ryzyka) w okresie 01.02.2025–31.03.2025, łącznie na 464 950,00 PLN; zwykle były realizowane w ciągu 24–72 godzin od wpłat gotówkowych (źródło: HT-00456). \n\nZapis do grafu wiedzy wykonany: fakt i wskazówka jakościowa dotycząca ryzyka odbiorcy zostały dodane i powiązane z HT-00456.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zawiera wszystkie kluczowe informacje z odpowiedzi oczekiwanej: nazwę podmiotu, jurysdykcję oraz dokładną sumę przelewów, dodatkowo podając okres oraz kontekst realizacji, co nie wpływa na merytoryczną zgodność.",
+      "zrodla_oczekiwane": [
+        "HT-00456"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "HT-00456"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.13",
+      "pytanie": "Jaki średni miesięczny dochód netto potwierdza zaświadczenie ZD-4503?",
+      "oczekiwana": "8 200,00 PLN (klientka Katarzyna Lewandowska, Nadmorskie Centrum Medyczne Sp. z o.o.).",
+      "odpowiedz_agenta": "Zaświadczenie ZD-4503 potwierdza średni miesięczny dochód netto w wysokości 8 200,00 PLN (źródło: ZD-4503). Weryfikacja: POTWIERDZONA (źródło: ZD-4503).",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zawiera poprawną wartość średniego miesięcznego dochodu netto 8 200,00 PLN zgodnie z odpowiedzią oczekiwaną.",
+      "zrodla_oczekiwane": [
+        "ZD-4503"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "ZD-4503"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": false
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.14",
+      "pytanie": "Ile wynosi wartość wykupu przedmiotu leasingu we wniosku WN-4503?",
+      "oczekiwana": "1% wartości = 1 800,00 PLN netto.",
+      "odpowiedz_agenta": "Wartość wykupu przedmiotu leasingu we wniosku WN-4503 wynosi 1 800,00 PLN netto (źródło: WN-4503). Zapisano ten zweryfikowany fakt do grafu wiedzy dla encji WN-4503.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta podaje poprawną wartość wykupu 1 800,00 PLN netto zgodną z odpowiedzią oczekiwaną, mimo braku bezpośredniego wskazania procentu.",
+      "zrodla_oczekiwane": [
+        "WN-4503"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "WN-4503"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": false
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.15",
+      "pytanie": "Jaki wewnętrzny próg alertu dla wpłat gotówkowych określa polityka AML?",
+      "oczekiwana": "15 000 PLN (rozbijanie wpłat poniżej progu = structuring).",
+      "odpowiedz_agenta": "Wewnętrzny próg alertu dla wpłat gotówkowych wynosi 15 000 PLN; polityka AML nakazuje monitorować rozbijanie wpłat tuż poniżej tego progu (structuring/smurfing) (źródło: POL-AML-01 §4, SAR-0034 §2, HT-00456 §3). Fakt był już obecny w grafie wiedzy — nie wykonano zapisu nowego faktu.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zgodnie podaje wewnętrzny próg 15 000 PLN oraz zwraca uwagę na monitorowanie rozbijania wpłat poniżej progu, co odpowiada oczekiwanej informacji.",
+      "zrodla_oczekiwane": [
+        "POL-AML-01"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "HT-00456",
+        "POL-AML-01",
+        "SAR-0034"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": false
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.16",
+      "pytanie": "Jaka jest klasa ryzyka kredytowego klienta KL-00124 (Katarzyna Lewandowska)?",
+      "oczekiwana": "Klasa A (scoring 92/100), ryzyko niskie.",
+      "odpowiedz_agenta": "Klasa ryzyka kredytowego klienta KL-00124 (Katarzyna Lewandowska) to A (źródła: DC-2202, KYC-00124). Informacja była już dostępna w grafie wiedzy (znaleziono fakt w DC-2202), więc nie wprowadzano nowego zapisu.",
+      "ocena": "czesciowa",
+      "uzasadnienie_oceny": "Odpowiedź agenta poprawnie podaje klasę ryzyka A, lecz brakuje informacji o scoringu 92/100 oraz określeniu ryzyka jako niskie.",
+      "zrodla_oczekiwane": [
+        "KYC-00124"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2202",
+        "KL-00124",
+        "KYC-00124"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.17",
+      "pytanie": "Ile wynosi opłata roczna za kartę kredytową i kiedy jest znoszona?",
+      "oczekiwana": "120,00 PLN; znoszona przy rocznym obrocie bezgotówkowym ≥ 12 000 PLN.",
+      "odpowiedz_agenta": "Opłata roczna za kartę kredytową wynosi 120 PLN i jest zniesiona, jeśli roczny obrót bezgotówkowy kartą osiągnie co najmniej 12 000 PLN (źródło: REG-KK-03).\n\nPotwierdzenie zapisu do grafu:\n- Zapisano fakt: \"Opłata roczna za kartę kredytową: 120 PLN; zniesiona przy rocznym obrocie bezgotówkowym ≥ 12 000 PLN.\" (node_id: learned::895ef998329c1f3b).\n- Dodano jakościową wskazówkę: \"Sprawdzić warianty kart — niektóre warianty mogą mieć inne opłaty i warunki zniesienia.\" (learning id: learning::0cc0f05bfe34a01e).\n\nUwaga: W dostępnych dokumentach (REG-KK-03) nie znaleziono szczegółów dotyczących różnych wariantów kart — jeśli chcesz, mogę poszukać, czy inne dokumenty/regulaminy zawierają odmienne stawki lub dodatkowe warunki.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta podaje dokładnie te same kluczowe wartości (120 PLN i próg 12 000 PLN) co odpowiedź oczekiwana, zachowując pełną zgodność merytoryczną.",
+      "zrodla_oczekiwane": [
+        "REG-KK-03",
+        "TOP-2025-Q1"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "REG-KK-03"
+      ],
+      "pokrycie_zrodel": 0.5,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "formułuję odpowiedź",
+        "formułuję odpowiedź",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "WERYFIKUJĘ odpowiedź w dokumentach"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "1",
+      "id": "P1.18",
+      "pytanie": "Jakie oprocentowanie limitu w rachunku firmowym przyznano w decyzji DC-2205?",
+      "oczekiwana": "12,50% w skali roku (zmienne); limit 50 000 PLN, prowizja za limit 1% rocznie = 500 PLN.",
+      "odpowiedz_agenta": "Oprocentowanie limitu w rachunku firmowym przyznane w decyzji DC-2205 wynosi 12,50% w skali roku (źródło: DC-2205).\n\nZapis do grafu wykonany: fakt dodany jako learned::bf6fe05342799bac.",
+      "ocena": "czesciowa",
+      "uzasadnienie_oceny": "Agent podał poprawne oprocentowanie 12,50% w skali roku, ale nie uwzględnił limitu 50 000 PLN oraz prowizji 1% rocznie.",
+      "zrodla_oczekiwane": [
+        "DC-2205"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2205"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.1",
+      "pytanie": "Czy rata w harmonogramie HS-7788 jest zgodna z kwotą kredytu i oprocentowaniem z umowy oraz tabeli oprocentowania?",
+      "oczekiwana": "Tak. Umowa UM-7788: 480 000 PLN na 300 mies.; oprocentowanie 7,95% = NRR 3M 5,85% + marża 2,10% (TO-2025-Q1); rata annuitetowa 3 688,83 PLN — zgodna z HS-7788.",
+      "odpowiedz_agenta": "Tak — rata w harmonogramie HS-7788 jest zgodna z kwotą kredytu i oprocentowaniem z umowy oraz tabeli oprocentowania.\n\nKrótko:\n- Kwota kredytu: 480 000,00 PLN.  \n- Oprocentowanie nominalne: 7,95% w skali roku = NRR 3M 5,85% + marża 2,10%.  \n- Okres: 300 rat (raty annuitetowe).  \n- Miesięczna rata w harmonogramie: 3 688,83 PLN.\n\nWszystkie powyższe wartości są wzajemnie spójne i potwierdzone w dokumentach; weryfikator ocenił odpowiedź jako POTWIERDZONĄ (źródło: HS-7788, UM-7788, TO-2025-Q1).\n\nUwaga o grafie: graf wiedzy już zawierał te fakty, więc nie było potrzeby zapisu nowego faktu.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zawiera wszystkie kluczowe dane zgodne z odpowiedzią oczekiwaną, potwierdzając zgodność raty, kwoty kredytu i oprocentowania.",
+      "zrodla_oczekiwane": [
+        "HS-7788",
+        "TO-2025-Q1",
+        "UM-7788"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "HS-7788",
+        "TO-2025-Q1",
+        "UM-7788"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": false
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.2",
+      "pytanie": "Na podstawie której decyzji zawarto umowę UM-7788 i jaki wskaźnik DTI przyjęto w tej decyzji?",
+      "oczekiwana": "Decyzja DC-2201 (pozytywna); DTI = 36,52% (rata 3 688,83 / dochód netto 10 100).",
+      "odpowiedz_agenta": "Umowa UM-7788 została zawarta na podstawie decyzji DC-2201; w tej decyzji przyjęto wskaźnik DTI = 36,52% (źródło: UM-7788, DC-2201).\n\nZapis do grafu wiedzy wykonano: learned::8bf1f3a5f2a6bb9a (potwierdzony fakt zapisany w grafie).",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta podaje poprawną decyzję DC-2201 oraz właściwy wskaźnik DTI 36,52%, co w pełni zgadza się z odpowiedzią oczekiwaną.",
+      "zrodla_oczekiwane": [
+        "DC-2201",
+        "UM-7788"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2201",
+        "UM-7788"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.3",
+      "pytanie": "Dlaczego wniosek WN-4508 został odrzucony, skoro klient miał wystarczającą zdolność kredytową?",
+      "oczekiwana": "Decyzja DC-2250 była negatywna nie z powodu zdolności (DTI 16,20% — akceptowalne), lecz z powodu klasy ryzyka E nadanej w raporcie RR-0012 na podstawie zgłoszeń SAR-0034 i SAR-0041 oraz braku możliwości ustalenia źródła środków (AML).",
+      "odpowiedz_agenta": "Wniosek WN-4508 został odrzucony nie z powodu braku zdolności kredytowej, lecz z powodów zgodności/AML: klientowi nadano klasę ryzyka E wskutek zgłoszeń SAR (SAR-0034, SAR-0041) i wdrożenia EDD, a bank nie mógł ustalić wiarygodnie źródeł pochodzenia środków. Formalnie wniosek spełniał kryteria finansowe (ZD-4508: dochód 12 500 PLN, indykatywna rata 2 025,17 PLN, DTI 16,20% < 45%), jednak POL-AML-01 i POL-RYZYKO-01 oraz rekomendacja RR-0012 skutkują wstrzymaniem udzielania nowych produktów dla klasy E, co zostało odzwierciedlone w decyzji DC-2250. Co może zrobić klient: dostarczyć kompletne dowody źródła środków (faktury, umowy handlowe, wyjaśnienia obrotów gotówkowych) i zaktualizować KYC; po usunięciu przesłanek ryzyka wniosek może zostać ponownie rozpatrzony. Zapis do grafu wiedzy: fakt przyczyny odrzucenia i krótka wskazówka jakościowa zostały dopisane (nauka zapisana).  \n(źródła: WN-4508, KYC-00456, ZD-4508, DC-2250, REG-KG-01, TO-2025-Q1, POL-AML-01, POL-RYZYKO-01)",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta w pełni pokrywa kluczowe fakty i liczby zawarte w odpowiedzi oczekiwanej, wyjaśniając powód odrzucenia wniosku mimo odpowiedniej zdolności kredytowej i odwołując się do tych samych dokumentów i przyczyn.",
+      "zrodla_oczekiwane": [
+        "DC-2250",
+        "RR-0012",
+        "WN-4508"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2250",
+        "KYC-00456",
+        "POL-AML-01",
+        "POL-RYZYKO-01",
+        "REG-KG-01",
+        "RR-0012",
+        "SAR-0034",
+        "SAR-0041",
+        "TO-2025-Q1",
+        "WN-4508",
+        "ZD-4508"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "formułuję odpowiedź",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.4",
+      "pytanie": "Który regulamin i którą politykę powołuje decyzja kredytowa DC-2201?",
+      "oczekiwana": "Regulamin kredytu hipotecznego REG-KH-02 oraz Politykę ryzyka kredytowego POL-RYZYKO-01 (dodatkowo tabelę TO-2025-Q1 dla parametrów cenowych).",
+      "odpowiedz_agenta": "Decyzja kredytowa DC-2201 powołuje się na:\n- regulamin: REG-KH-02\n- politykę: POL-RYZYKO-01\n\nŹródło: DC-2201 (potwierdzone w grafie).  \nWeryfikator: POTWIERDZONA.  \nDodatkowe powiązane dokumenty znalezione w grafie: WN-4501, KYC-00123, ZD-4501, UM-7788.\n\nUwaga proceduralna: informacja była już dostępna w grafie — nie było potrzeby wyszukiwania dodatkowych dokumentów ani zapisu nowego faktu do grafu.",
+      "ocena": "czesciowa",
+      "uzasadnienie_oceny": "Odpowiedź agenta poprawnie wskazuje regulamin i politykę, lecz pomija tabelę TO-2025-Q1 wymienioną w odpowiedzi oczekiwanej.",
+      "zrodla_oczekiwane": [
+        "DC-2201",
+        "POL-RYZYKO-01",
+        "REG-KH-02"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2201",
+        "KYC-00123",
+        "POL-RYZYKO-01",
+        "REG-KH-02",
+        "UM-7788",
+        "WN-4501",
+        "ZD-4501"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.5",
+      "pytanie": "Jakie warunki postawiła decyzja warunkowa DC-2203 i w jaki sposób zostały spełnione w umowie leasingu UM-7790?",
+      "oczekiwana": "DC-2203 wymagała albo podwyższenia opłaty wstępnej do 30%, albo dodatkowego zabezpieczenia. W UM-7790 klient wybrał drugi wariant: ustanowił poręczenie cywilne Tomasza Górskiego oraz weksel własny in blanco, zachowując opłatę wstępną 20% (36 000 PLN); dostarczył też zaświadczenia ZUS/US.",
+      "odpowiedz_agenta": "Odpowiedź:\n\nDecyzja warunkowa DC-2203 postawiła następujące warunki i zostały one spełnione w umowie leasingu UM-7790 w sposób opisany poniżej:\n\n1. Poręczenie cywilne Tomasza Górskiego — ustanowione jako zabezpieczenie w umowie leasingu UM-7790 (źródło: DC-2203, UM-7790).  \n2. Weksel własny in blanco z deklaracją wekslową — dołączony i obowiązujący w UM-7790 (źródło: DC-2203, UM-7790).  \n3. Zaświadczenia o niezaleganiu wobec ZUS i US (data 2025-03-14) — dostarczone i potwierdzone w dokumentacji powiązanej z UM-7790 (źródło: DC-2203, UM-7790).  \n4. Umowa ubezpieczenia AC/OC z cesją na Finansującego — zawarta i udokumentowana w UM-7790 (źródło: DC-2203, UM-7790).\n\nWerdykt weryfikatora: POTWIERDZONA — wszystkie powyższe warunki są dosłownie potwierdzone w dokumentach DC-2203 i UM-7790.\n\nNauka zapisana do grafu: zweryfikowany fakt został dodany do grafu (ID: learned::71a87faa00fd032c). Dodatkowo zapisana została wskazówka jakościowa powiązana z DC-2203 i UM-7790 (ID: learning::d5dd7d59ccfc235d): „Sprawdzić daty dostarczenia zaświadczeń dla zgodności oraz upewnić się co do formy zabezpieczenia w umowie; aktualizować powiązania w przypadku zmian wariantu zabezpieczeń.”\n\nJeśli chcesz, mogę wypisać cytaty/wyszczególnione fragmenty z dokumentów DC-2203 i UM-7790 (podając linie/sekcje) potwierdzające każdy punkt.",
+      "ocena": "czesciowa",
+      "uzasadnienie_oceny": "Odpowiedź agenta poprawnie wskazuje na poręczenie cywilne, weksel in blanco oraz zaświadczenia ZUS/US, ale dodaje warunek ubezpieczenia AC/OC nie wymieniony w odpowiedzi oczekiwanej, a pomija informację o wyborze wariantu zabezpieczenia zamiast podwyższenia opłaty wstępnej 30%.",
+      "zrodla_oczekiwane": [
+        "DC-2203",
+        "UM-7790"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2203",
+        "UM-7790"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "WERYFIKUJĘ odpowiedź w dokumentach"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.6",
+      "pytanie": "Jak zmieniła się rata kredytu hipotecznego UM-7788 po zmianie wskaźnika i co było przyczyną?",
+      "oczekiwana": "Rata spadła z 3 688,83 PLN na 3 531,88 PLN, ponieważ NRR 3M spadł z 5,85% (TO-2025-Q1) do 5,35% (TO-2025-Q2), co przy marży 2,10% dało oprocentowanie 7,45% zamiast 7,95%. Nowy harmonogram to HS-7794 (obowiązuje od raty nr 2).",
+      "odpowiedz_agenta": "Rata kredytu UM-7788 zmniejszyła się z 3 688,83 PLN do 3 531,88 PLN (spadek o 156,95 PLN). Przyczyną była obniżka wskaźnika NRR 3M z 5,85% do 5,35%, co zmniejszyło oprocentowanie z 7,95% do 7,45% i spowodowało wygenerowanie zaktualizowanego harmonogramu spłat. (źródła: UM-7788, HS-7788, HS-7794, TO-2025-Q1, TO-2025-Q2)\n\nZapis do grafu wiedzy wykonany: saved: true (dodano facts id: learned::d43e2ba67066f8e0); dodano wskazówkę jakościową powiązaną z UM-7788.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Agent poprawnie podał zmiany raty, wskaźnika NRR 3M, oprocentowania oraz wspomniał o nowym harmonogramie, zachowując zgodność merytoryczną z odpowiedzią oczekiwaną.",
+      "zrodla_oczekiwane": [
+        "HS-7794",
+        "REG-KH-02",
+        "TO-2025-Q2",
+        "UM-7788"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "HS-7788",
+        "HS-7794",
+        "TO-2025-Q1",
+        "TO-2025-Q2",
+        "UM-7788"
+      ],
+      "pokrycie_zrodel": 0.75,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.7",
+      "pytanie": "Którego klienta i na podstawie jakich zgłoszeń przeklasyfikowano do najwyższej klasy ryzyka (E)?",
+      "oczekiwana": "Klienta KL-00456 (Marek Nowicki, JDG „MN Trade\"). Podstawa: zgłoszenia SAR-0034 (structuring) i SAR-0041 (pass-through) → raport ryzyka RR-0012 → aktualizacja karty KYC-00456 do klasy E.",
+      "odpowiedz_agenta": "Klient Marek Andrzej Nowicki (KL-00456) został przeklasyfikowany do najwyższej klasy ryzyka (E) w dniu 2025-04-16 na podstawie zgłoszeń SAR-0034 i SAR-0041 (podejrzenia AML) oraz raportu ryzyka RR-0012. Decyzja była zgodna z procedurą POL-RYZYKO-01 (źródła: KYC-00456, SAR-0034, SAR-0041, RR-0012).\n\nZapis do grafu wiedzy wykonany: fakt przeklasyfikowania oraz zwięzła wskazówka jakościowa powiązana z KL-00456 zostały dodane do grafu.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta podaje poprawnego klienta, właściwe numery zgłoszeń oraz powołuje się na raport ryzyka RR-0012 i kartę KYC-00456, co odpowiada oczekiwanym kluczowym faktom.",
+      "zrodla_oczekiwane": [
+        "KYC-00456",
+        "RR-0012",
+        "SAR-0034",
+        "SAR-0041"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "KL-00456",
+        "KYC-00456",
+        "POL-RYZYKO-01",
+        "RR-0012",
+        "SAR-0034",
+        "SAR-0041"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.8",
+      "pytanie": "Jaka jest relacja między zaświadczeniem ZD-4501, wnioskiem WN-4501 i decyzją DC-2201?",
+      "oczekiwana": "ZD-4501 jest załącznikiem nr 1 do wniosku WN-4501 i potwierdza dochód netto 10 100 PLN; ten dochód został użyty w decyzji DC-2201 do wyliczenia wskaźnika DTI (36,52%).",
+      "odpowiedz_agenta": "Relacja (krótko):\nZaświadczenie ZD-4501 jest załącznikiem do wniosku WN-4501; decyzja DC-2201 rozstrzyga o wniosku WN-4501 i w procesie decyzji uwzględniono dochód wykazany w ZD-4501 przy wyliczeniu wskaźnika DTI. Graf zawierał te relacje (found in graph).\n\nŹródła: ZD-4501, WN-4501, DC-2201\n\nUżyte fakty:\n- ZD-4501 jest załącznikiem do WN-4501 (załącznik nr 1). (źródło: ZD-4501, WN-4501)\n- Dochód z ZD-4501 został użyty w wyliczeniu wskaźnika DTI w decyzji DC-2201. (źródło: DC-2201, ZD-4501)\n- DC-2201 rozstrzyga o wniosku WN-4501. (źródło: DC-2201, WN-4501)\n\nZapis do grafu: relacje były już obecne w grafie; potwierdzam, że nie było potrzeby dopisywania nowych faktów.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta poprawnie odzwierciedla kluczowe fakty dotyczące relacji między dokumentami, w tym załącznik nr 1, wykorzystanie dochodu netto w wyliczeniu wskaźnika DTI oraz rolę decyzji w rozstrzyganiu wniosku.",
+      "zrodla_oczekiwane": [
+        "DC-2201",
+        "WN-4501",
+        "ZD-4501"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2201",
+        "WN-4501",
+        "ZD-4501"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": false
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.9",
+      "pytanie": "Ile wynosi rata leasingowa netto i brutto oraz z czego wynika różnica?",
+      "oczekiwana": "Rata netto 3 586,87 PLN, brutto 4 411,85 PLN; różnica to VAT 23% doliczany do raty leasingu.",
+      "odpowiedz_agenta": "Rata leasingowa netto: 3 586,87 PLN.  \nRata leasingowa brutto: 4 411,85 PLN.  \nRóżnica: 824,98 PLN — wynika z podatku VAT (23%: 3 586,87 × 0,23 = 824,98; netto + VAT = brutto).  \n\n(źródło: HS-7790, graf wiedzy).  \nUwaga: fakt był już zapisany w grafie wiedzy — nie wymagał dodatkowego zapisu.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta podaje te same kwoty netto i brutto oraz prawidłowo wyjaśnia, że różnica wynika z podatku VAT 23%, co jest zgodne z odpowiedzią oczekiwaną.",
+      "zrodla_oczekiwane": [
+        "HS-7790",
+        "UM-7790"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "HS-7790"
+      ],
+      "pokrycie_zrodel": 0.5,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": false
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.10",
+      "pytanie": "Czy profil ryzyka klienta KL-00124 jest zgodny z pozytywnym rozstrzygnięciem decyzji DC-2202?",
+      "oczekiwana": "Tak. KYC-00124: klasa A, scoring 92/100, brak zobowiązań; DC-2202: DTI 13,23%, spełnione kryteria POL-RYZYKO-01 — decyzja pozytywna spójna z profilem.",
+      "odpowiedz_agenta": "Tak — profil ryzyka klienta KL-00124 jest zgodny z pozytywnym rozstrzygnięciem decyzji DC-2202. Klient ma klasyfikację A, scoring 92/100 i DTI 13,23%, a wartości te w dokumentach KYC-00124 i POL-RYZYKO-01 uzasadniają pozytywną decyzję DC-2202 (źródło: DC-2202, KYC-00124, POL-RYZYKO-01). Dodatkowa weryfikacja w powiązanych dokumentach umownych i regulaminach potwierdza spójność warunków (źródło: UM-7789, REG-KH-02, TOP-2025-Q1, UM-7788, DC-2201).\n\nZapis do grafu wiedzy wykonany: zweryfikowany fakt zapisano jako learned::156bc6adb1631780 (powiązane źródła: DC-2202, KYC-00124, POL-RYZYKO-01, UM-7789, REG-KH-02, TOP-2025-Q1, UM-7788, DC-2201).",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zawiera wszystkie kluczowe informacje merytoryczne zgodne z odpowiedzią oczekiwaną, w tym klasę A, scoring 92/100, DTI 13,23% oraz potwierdzenie spełnienia kryteriów POL-RYZYKO-01 oraz pozytywnej decyzji DC-2202.",
+      "zrodla_oczekiwane": [
+        "DC-2202",
+        "KYC-00124",
+        "POL-RYZYKO-01"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2201",
+        "DC-2202",
+        "KL-00124",
+        "KYC-00124",
+        "POL-RYZYKO-01",
+        "REG-KH-02",
+        "TOP-2025-Q1",
+        "UM-7788",
+        "UM-7789"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.11",
+      "pytanie": "Kto jest kredytobiorcą w umowie UM-7789, jaki jest cel kredytu i na jaki rachunek następuje spłata?",
+      "oczekiwana": "Katarzyna Maria Lewandowska (KL-00124); cel: remont mieszkania; rachunek spłaty (testowy) PL33 9999 1000 0000 0077 8900 0002.",
+      "odpowiedz_agenta": "Oto odpowiedź na podstawie dokumentu UM-7789:\n\n1) Kredytobiorca:\n   - Katarzyna Maria Lewandowska, PESEL (TESTOWY) 90111067321, zam. ul. Słoneczna 5 m. 2, 80-100 Gdańsk, numer klienta KL-00124.\n   (źródło: UM-7789)\n\n2) Cel kredytu:\n   - Deklarowany cel: remont mieszkania (kredyt niecelowy).\n   (źródło: UM-7789)\n\n3) Rachunek do spłaty:\n   - PL33 9999 1000 0000 0077 8900 0002.\n   (źródło: UM-7789)\n\nWeryfikator uznał powyższe informacje za POTWIERDZONE (źródło: UM-7789).\n\nZapis do grafu: zweryfikowany fakt o kredytobiorcy UM-7789 oraz jakościowa wskazówka dotycząca braków danych w grafie zostały dodane do pamięci grafowej.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zawiera wszystkie kluczowe informacje zgodne z oczekiwaną: poprawne dane kredytobiorcy, cel kredytu oraz rachunek do spłaty.",
+      "zrodla_oczekiwane": [
+        "KYC-00124",
+        "UM-7789"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "KL-00124",
+        "UM-7789"
+      ],
+      "pokrycie_zrodel": 0.5,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.12",
+      "pytanie": "Które oprocentowanie zastosowano w kredycie gotówkowym z wniosku WN-4506 i skąd ono pochodzi?",
+      "oczekiwana": "10,90% stałe (przedział 20 001–60 000 PLN) — z tabeli TO-2025-Q2 (wniosek złożony w Q2 2025). Rata 980,74 PLN dla 30 000 PLN na 36 mies.",
+      "odpowiedz_agenta": "Krótko i rzeczowo:\n\n- Oprocentowanie: stałe 10,90% w skali roku. (źródło: WN-4506)\n- Skąd pochodzi: wartość pochodzi bezpośrednio z warunków wniosku WN-4506 i została dodatkowo potwierdzona w powiązanej decyzji DC-2206. (źródła: WN-4506, DC-2206)\n\nInformacja o zapisie do grafu:\n- Operacja zapisu zweryfikowanego faktu została wykonana — system zgłosił: „Zapisano zweryfikowany fakt 'oprocentowanie 10,90% stałe w skali roku' dla encji WN-4506” oraz dodano wskazówkę jakościową dotyczącą weryfikacji zgodności z decyzją DC-2206.\n- Przy próbie natychmiastowego ponownego odczytu grafu wynik był pusty (możliwa krótkotrwała niespójność replikacji). Mogę powtórzyć sprawdzenie/zapis i potwierdzić, jeśli chcesz.\n\n(źródła: WN-4506, DC-2206)",
+      "ocena": "czesciowa",
+      "uzasadnienie_oceny": "Agent podał poprawną wartość oprocentowania 10,90% stałe, jednak nie wymienił konkretnej tabeli TO-2025-Q2 ani szczegółów dotyczących przedziału kwotowego i raty, które są kluczowe w odpowiedzi oczekiwanej.",
+      "zrodla_oczekiwane": [
+        "DC-2206",
+        "TO-2025-Q2",
+        "WN-4506"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2206",
+        "WN-4506"
+      ],
+      "pokrycie_zrodel": 0.67,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.13",
+      "pytanie": "Czym różnią się dwie historie transakcji (HT-00123 i HT-00456) i jakie skutki compliance z nich wynikły?",
+      "oczekiwana": "HT-00123 (KL-00123) to normalny profil detaliczny (wynagrodzenie, spłata raty, wydatki bytowe) — brak przesłanek AML. HT-00456 (KL-00456) wykazuje structuring i transfery pass-through do jurysdykcji wysokiego ryzyka — skutkuje zgłoszeniami SAR-0034/0041.",
+      "odpowiedz_agenta": "Odpowiedź gotowa — poniżej streszczenie i skutki compliance. Zgodnie z procedurą: odpowiedź została zweryfikowana (verifier: POTWIERDZONA) i zapisano zweryfikowany fakt do grafu oraz dodano wskazówkę jakościową (graph_add_learned_fact ID learned::5afd5d875b981501; graph_add_learning ID learning::456358dc9b3f951a).\n\n1) Najważniejsze różnice (krótkie porównanie)\n- Produkt / rodzaj rachunku:\n  - HT-00123: rachunek osobisty (Anna Katarzyna Kowalska). (źródła: HT-00123(HS), UM-7788(UM), HS-7788(HS), HS-7794(HS))\n  - HT-00456: rachunek firmowy JDG „MN Trade Marek Nowicki\". (źródła: HT-00456(HS), KL-00456(KYC))\n- Okres:\n  - HT-00123: 01.03.2025–31.05.2025 (wyciąg 01.06.2025). (źródło: HT-00123)\n  - HT-00456: 01.02.2025–31.03.2025 (wyciąg 01.04.2025). (źródło: HT-00456)\n- Kluczowe zdarzenia:\n  - HT-00123: spłaty rat kredytu hipotecznego UM-7788 zgodne z harmonogramami HS-7788 i HS-7794; saldo początkowe 18 450,00 PLN. (źródła: UM-7788, HS-7788, HS-7794)\n  - HT-00456: 5 przelewów SWIFT na rzecz „Vantia Global Trade LLC” o łącznej kwocie 464 950,00 PLN; transfery następowały 24–72 godziny po wpłatach gotówkowych. (źródła: HT-00456, KL-00456)\n\n2) Skutki compliance\n- HT-00123: brak odnotowanych działań compliance ani zgłoszeń (wg dostępnych dokumentów). (źródła: HT-00123, UM-7788, HS-7788, HS-7794)\n- HT-00456: na podstawie zestawu transakcji zgłoszono transakcję podejrzaną (SAR-0041) — formalne zgłoszenie do jednostki odpowiedzialnej za AML/CTF. (źródła: HT-00456, KL-00456, SAR-0041)\n- Dodatkowa wskazówka zapisana w grafie (learning): „Przy wielu dużych transferach SWIFT po wpłatach gotówkowych należy weryfikować dokumenty źródła środków i rozważyć szybkie eskalowanie do SAR; dokumentacja KYC powinna zawierać uzasadnienie transakcji B2B.” (graph learning ID: learning::456358dc9b3f951a)\n\n3) Braki danych potrzebne do pełnej oceny compliance\n- Brak szczegółów dot. powodów zgłoszenia SAR-0041 i wyników dalszego postępowania (czy SAR zakończono, czy były dalsze sankcje/akcje).\n- Brak informacji o klasyfikacji ryzyka klienta KL-00456 i ewentualnych alertach systemowych powiązanych (DTI, scoring, profile ryzyka).\n- Brak szczegółów źródeł wpłat gotówkowych w HT-00456 (pochodzenie środków) oraz dowodów uzasadniających charakter przepływów B2B.\n- Dla HT-00123 brak informacji o wszelkich alertach lub dodatkowych analizach AML poza zgodnymi spłatami kredytu.\n\nŹródła: HT-00123(HS), UM-7788(UM), HS-7788(HS), HS-7794(HS), HT-00456(HS), KL-00456(KYC), SAR-0041(SAR).",
+      "ocena": "czesciowa",
+      "uzasadnienie_oceny": "Agent poprawnie wskazał różnice między HT-00123 a HT-00456 oraz skutki compliance dla HT-00456, jednak pominął dokładne określenie profilu HT-00123 jako 'normalny profil detaliczny' i nie wspomniał o strukturingu oraz transferach pass-through do jurysdykcji wysokiego ryzyka, co było kluczowe w odpowiedzi oczekiwanej.",
+      "zrodla_oczekiwane": [
+        "HT-00123",
+        "HT-00456",
+        "SAR-0034",
+        "SAR-0041"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "HS-7788",
+        "HS-7794",
+        "HT-00123",
+        "HT-00456",
+        "KL-00456",
+        "SAR-0041",
+        "UM-7788"
+      ],
+      "pokrycie_zrodel": 0.75,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "2",
+      "id": "P2.14",
+      "pytanie": "Jakie zabezpieczenia ustanowiono dla kredytu hipotecznego UM-7788 i jak mają się one do wymogów polityki ryzyka?",
+      "oczekiwana": "Hipoteka umowna do 720 000 PLN (150% kwoty), cesja z polisy ubezpieczenia nieruchomości, ubezpieczenie pomostowe do wpisu hipoteki — zgodne z wymogiem zabezpieczenia hipotecznego z POL-RYZYKO-01 §4.",
+      "odpowiedz_agenta": "Odpowiedź przygotowana na podstawie grafu i dokumentów; zapis do grafu wykonany — nowe fakty i wskazówka jakościowa dodane.\n\nJakie zabezpieczenia ustanowiono dla kredytu UM-7788 i jak mają się one do wymogów polityki ryzyka?\n\n1. Hipoteka umowna\n   - Typ/wartość: hipoteka umowna do kwoty 720 000,00 PLN (150% kwoty kredytu) na nieruchomości wpisanej do KW GD1Y/00099999/9.\n   - Status: ustanowiona.\n   - Źródła: UM-7788 (§6), DC-2201 (V).\n\n2. Cesja praw z polisy ubezpieczenia nieruchomości\n   - Typ: cesja praw z polisy ubezpieczenia nieruchomości od ognia i zdarzeń losowych na rzecz Banku.\n   - Status: ustanowiona.\n   - Źródła: UM-7788 (§6), DC-2201 (V), REG-KH-02 (§7).\n\n3. Ubezpieczenie pomostowe\n   - Typ: ubezpieczenie pomostowe obowiązujące do dnia prawomocnego wpisu hipoteki.\n   - Status: ustanowione do czasu wpisu.\n   - Źródła: UM-7788 (§6), DC-2201 (V), REG-KH-02 (§7).\n\nOcena zgodności z polityką ryzyka:\n- Polityka POL-RYZYKO-01 (§4) wymaga hipoteki umownej jako zabezpieczenia podstawowego, cesji z polisy nieruchomości oraz ubezpieczenia pomostowego do czasu wpisu hipoteki.\n- Ocena: zgodne (compliant) — zabezpieczenia w UM-7788 spełniają wymogi POL-RYZYKO-01 (potwierdzenie w DC-2201 i zgodność z REG-KH-02).\n\nŹródła: UM-7788, DC-2201, REG-KH-02, POL-RYZYKO-01, HS-7788.\n\nPotwierdzenie zapisu do grafu:\n- Nowe fakty zapisane dla UM-7788 (hipoteka 720 000 PLN; cesja polisy; ubezpieczenie pomostowe) oraz fakt zgodności z POL-RYZYKO-01 i wskazówka jakościowa — wszystkie zapisy dodane pomyślnie (id faktów i wskazówki w grafie: learned::9ec3e396a29a9857, learned::a34f963f2739bbad, learned::77767af104e03007, learned::60fafb9d11b1dd5c; learning::a1d3627ce8c66365).",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zawiera wszystkie kluczowe zabezpieczenia (hipoteka do 720 000 PLN, cesja z polisy nieruchomości, ubezpieczenie pomostowe) oraz potwierdza ich zgodność z wymogami polityki POL-RYZYKO-01 §4, co odpowiada oczekiwaniom merytorycznym.",
+      "zrodla_oczekiwane": [
+        "POL-RYZYKO-01",
+        "UM-7788"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2201",
+        "HS-7788",
+        "POL-RYZYKO-01",
+        "REG-KH-02",
+        "UM-7788"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "3",
+      "id": "P3.1",
+      "pytanie": "Prześledź kompletny łańcuch kredytu hipotecznego Anny Kowalskiej — od profilu klienta do harmonogramu — i zweryfikuj spójność kluczowych liczb.",
+      "oczekiwana": "- Łańcuch: KYC-00123 → WN-4501 → (załącznik ZD-4501) → DC-2201 → UM-7788 → HS-7788.\n  - Klient klasy B (scoring 78), dochód netto 10 100 PLN (ZD-4501).\n  - Kredyt 480 000 PLN, nieruchomość warta 600 000 PLN → **LTV 80%**; wkład własny 120 000 PLN.\n  - Oprocentowanie 7,95% (NRR 3M 5,85% + marża 2,10%, TO-2025-Q1); **rata 3 688,83 PLN** na 300 mies.\n  - **DTI 36,52%** (3 688,83 / 10 100) < limit 45% (POL-RYZYKO-01) → decyzja pozytywna.\n  - Prowizja 9 600 PLN (2%, TOP-2025-Q1), RRSO 8,50%, suma odsetek 626 649,94 PLN.\n  - Liczby są spójne w całym łańcuchu.",
+      "odpowiedz_agenta": "Odpowiedź oparta wyłącznie na dokumentach i grafie — poniżej krótkie, konkretne podsumowanie łańcucha kredytowego Anny Kowalskiej, wynik kontroli spójności oraz informacja o aktualizacji grafu.\n\n1) Streszczenie łańcucha (który dokument potwierdza którą wartość)\n- Profil klienta (KYC-00123): dochód netto 10 100 PLN; scoring 78; brak zobowiązań; klasa ryzyka B. (źródło: KYC-00123)\n- Wniosek (WN-4501): wnioskowana/zgodna kwota 480 000 PLN; okres 300 mies.; raty annuitetowe; dochód 10 100 PLN; LTV 80%. (źródło: WN-4501)\n- Decyzja (DC-2201): zatwierdza 480 000 PLN, 300 mies., oprocentowanie zmienne = NRR3M 5,85% + marża 2,10% = 7,95% p.a., prowizja 2% = 9 600 PLN, rata annuitetowa 3 688,83 PLN, DTI 36,52% (3 688,83 / 10 100). (źródło: DC-2201)\n- Umowa (UM-7788): potwierdza 480 000 PLN, 300 mies., oprocentowanie 7,95% (NRR3M 5,85% + marża 2,10%), prowizja 9 600 PLN, 300 rat annuitetowych po 3 688,83 PLN, pierwsza rata 15.03.2025. (źródło: UM-7788)\n- Harmonogram (HS-7788): szczegółowy plan 300 rat annuitetowych po 3 688,83 PLN; pierwsza rata 15.03.2025; amortyzacja zgodna z podanymi ratami. (źródło: HS-7788)\n\n2) Kluczowe liczby i źródła (skrócone)\n- Dochód netto: 10 100 PLN (KYC-00123, WN-4501, DC-2201)\n- Scoring: 78 (KYC-00123, DC-2201)\n- Kwota kredytu: 480 000 PLN (WN-4501, DC-2201, UM-7788, HS-7788)\n- Okres: 300 mies. (25 lat) (WN-4501, DC-2201, UM-7788)\n- NRR3M: 5,85% (DC-2201, UM-7788) — część oprocentowania\n- Marża: 2,10% (DC-2201, UM-7788)\n- Oprocentowanie nominalne: 7,95% p.a. (NRR3M + marża) (DC-2201, UM-7788)\n- Prowizja: 9 600 PLN (2%) (DC-2201, UM-7788)\n- Rata miesięczna (annuitet): 3 688,83 PLN (DC-2201, UM-7788, HS-7788)\n- DTI: 36,52% (obliczenie: 3 688,83 / 10 100) — podane i potwierdzone w DC-2201 (źródło: DC-2201)\n- Pierwsza rata: 15.03.2025 (UM-7788, HS-7788)\n\n3) Wynik kontroli spójności\n- Werdykt: POTWIERDZONA — wszystkie kluczowe liczby i stwierdzenia są spójne między dokumentami KYC-00123, WN-4501, DC-2201, UM-7788 i HS-7788.\n- Stwierdzenia oparte bezpośrednio na dokumentach (patrz punkty wyżej). Nie wykryto rozbieżności ani braków istotnych liczb w zakresie żądanym przez użytkownika.\n\n4) Braki / niezgodności\n- Brak. (DTI był początkowo brakujący w grafie, ale został odnaleziony i potwierdzony w DC-2201).\n\n5) Aktualizacja grafu (nauka)\n- Zapisano zweryfikowane fakty do grafu (potwierdzenie zapisu):\n  - Dodano fakt(y) learned::0a7fdafcc6c2ee95 (fakty): income_net=10 100 PLN; scoring=78; loan_amount=480 000 PLN; term_months=300; interest_rate_nominal=7.95%; margin=2.10%; index=NRR3M (index_rate=5.85%); commission=9 600 PLN (2%); monthly_payment=3 688,83 PLN; payment_type=annuitet; DTI=36.52%; first_payment_date=2025-03-15. (źródła przypisane: KYC-00123, WN-4501, DC-2201, UM-7788, HS-7788)\n  - Dodano wskazówkę jakościową learning::25a21c0c00ef6c83: \"Początkowo brakowało wartości DTI w grafie; ostatecznie DTI 36,52% wyliczone i potwierdzone w DC-2201. Przy przyszłych zapytaniach sprawdzać decyzję kredytową DC dla obliczeń DTI.\"\n- Potwierdzam wykonanie zapisu do grafu (ID faktu i ID wskazówki powyżej).\n\n6) Uwagi końcowe\n- Odpowiedź i weryfikacja opierają się wyłącznie na dokumentach: KYC-00123, WN-4501, DC-2201, UM-7788, HS-7788.\n- Jeśli chcesz, mogę dostarczyć pełne fragmenty z dokumentów (cytaty z miejsc obliczeń) lub wyeksportować harmonogram (HS-7788) w formie tabeli.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta kompletne i spójnie odzwierciedla wszystkie kluczowe liczby i elementy łańcucha kredytowego zgodnie z odpowiedzią oczekiwaną.",
+      "zrodla_oczekiwane": [
+        "DC-2201",
+        "HS-7788",
+        "KYC-00123",
+        "POL-RYZYKO-01",
+        "REG-KH-02",
+        "TO-2025-Q1",
+        "TOP-2025-Q1",
+        "UM-7788",
+        "WN-4501",
+        "ZD-4501"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2201",
+        "HS-7788",
+        "KYC-00123",
+        "UM-7788",
+        "WN-4501"
+      ],
+      "pokrycie_zrodel": 0.5,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "3",
+      "id": "P3.2",
+      "pytanie": "Wyjaśnij, w jaki sposób działania compliance doprowadziły do odmowy kredytu Markowi Nowickiemu — od transakcji do decyzji. Wskaż całą sekwencję.",
+      "oczekiwana": "- Rachunek firmowy (HT-00456) wykazał wpłaty gotówkowe rozbijane poniżej progu 15 000 PLN (structuring) i szybkie transfery ~464 950 PLN do Vantia (pass-through).\n  - Powstały zgłoszenia SAR-0034 (structuring) i SAR-0041 (pass-through), oba na podstawie POL-AML-01.\n  - Raport ryzyka RR-0012 zagregował oba SAR-y i rekomendował klasę E oraz wstrzymanie nowych kredytów.\n  - Kartę KYC-00456 zaktualizowano do klasy E (WYSOKIE), wdrożono EDD.\n  - Kolejny wniosek WN-4508 (kredyt 80 000 PLN) otrzymał decyzję **negatywną DC-2250** — mimo DTI 16,20% — z powodu klasy E i braku możliwości ustalenia źródła środków.\n  - To pełna pętla zwrotna: transakcje → ryzyko → odmowa.",
+      "odpowiedz_agenta": "Poniżej cały zidentyfikowany łańcuch zdarzeń „od transakcji do decyzji” opisujący, w jaki sposób działania compliance doprowadziły do odmowy kredytu Markowi Nowickiemu. Źródła podane przy każdym kroku.\n\n1) Wykrycie nieprawidłowych przepływów/transakcji → zgłoszenia SAR  \n   - System monitoringu / analitycy compliance zidentyfikowali sygnały structuring (rozbijanie wpłat) i pass‑through (przepływy przez pośredników) i wygenerowali raporty SAR powiązane z klientem (źródła: SAR-0034 — structuring; SAR-0041 — pass‑through).\n\n2) Weryfikacja KYC i przypisanie wysokiego ryzyka AML  \n   - KYC klienta wykazało brak wiarygodnego udokumentowania źródła środków oraz sklasyfikowało klienta do wysokiej klasy ryzyka (klasa E) (źródło: KYC-00456).\n\n3) Konsolidacja dowodów przez compliance i ocena ryzyka  \n   - Dział compliance skonsolidował wyniki SAR i braki w dokumentacji, oceniając łączny poziom ryzyka jako znaczący (potencjalne pranie pieniędzy / brak przejrzystości finansów) (źródła: SAR-0034, SAR-0041, KYC-00456).\n\n4) Rekomendacja odmowy (raport ryzyka)  \n   - Na podstawie powyższych ustaleń compliance przygotowało rekomendację odmowy (raport ryzyka wskazujący na konieczność odmowy) (źródło: RR-0012).\n\n5) Ostateczna decyzja odmowna  \n   - Decyzja kredytowa formalnie odrzuciła wniosek Marka Nowickiego, argumentując to wysokim ryzykiem AML (klasa E), podejrzeniami structuring i pass‑through oraz brakiem udokumentowanego źródła środków (źródło: DC-2250).\n\nPotwierdzenie procesu wewnętrznego:\n- Wszystkie powyższe elementy są potwierdzone w dokumentach: DC-2250, KYC-00456, SAR-0034, SAR-0041 oraz RR-0012 (werdykt weryfikatora: POTWIERDZONA).\n\nAkt nauki (zapis do grafu):\n- Na podstawie tej weryfikacji zapisano do grafu zweryfikowany fakt dotyczący odmowy kredytu dla Marka Nowickiego oraz dodano wskazówkę jakościową. Zapis wykonany (fact_id: learned::3730bb6a5c3bc304, learning_id: learning::3730bb6a5c3bc304). Powiązane źródła w zapisie: DC-2250, KYC-00456, SAR-0034, SAR-0041, RR-0012.\n\nJeśli chcesz, mogę rozwinąć którykolwiek krok (np. przytoczyć fragmenty z DC-2250 lub KYC-00456) — daj znać, które dokumenty chcesz zobaczyć dokładniej.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta w pełni odtwarza kluczowe fakty i całą sekwencję działań compliance prowadzących do odmowy kredytu, zgodnie z odpowiedzią oczekiwaną.",
+      "zrodla_oczekiwane": [
+        "DC-2250",
+        "HT-00456",
+        "KYC-00456",
+        "POL-AML-01",
+        "POL-RYZYKO-01",
+        "RR-0012",
+        "SAR-0034",
+        "SAR-0041",
+        "WN-4508"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2250",
+        "KYC-00456",
+        "RR-0012",
+        "SAR-0034",
+        "SAR-0041"
+      ],
+      "pokrycie_zrodel": 0.56,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "3",
+      "id": "P3.3",
+      "pytanie": "Porównaj trzy typy decyzji kredytowych w zbiorze (pozytywną, warunkową, negatywną) i wskaż, jak profil ryzyka z KYC oraz polityki determinowały wynik każdej z nich.",
+      "oczekiwana": "- **Pozytywna — DC-2201** (Anna Kowalska): klasa B, DTI 36,52%, LTV 80% — wszystkie kryteria POL-RYZYKO-01 spełnione → udzielenie kredytu.\n  - **Warunkowa — DC-2203** (Bałtyk Logistyka): klasa C przy podwyższonym zadłużeniu → zgoda pod warunkiem opłaty wstępnej 30% lub dodatkowego zabezpieczenia (POL-RYZYKO-01 §5).\n  - **Negatywna — DC-2250** (Marek Nowicki): zdolność wystarczająca (DTI 16,20%), ale klasa E z RR-0012 (AML) → odmowa (POL-RYZYKO-01 §5, POL-AML-01).\n  - Wniosek: o wyniku decydował nie tylko wskaźnik finansowy, lecz klasa ryzyka (w tym override z tytułu AML).",
+      "odpowiedz_agenta": "Poniżej krótkie, rzeczowe porównanie i wskazanie, jak profil ryzyka z KYC oraz POL-RYZYKO-01 determinowały wynik dla każdego typu decyzji. Wszystkie stwierdzenia opierają się wyłącznie na dokumentach — podaję źródła.\n\n1) Decyzja pozytywna\n- Przykłady: DC-2201, DC-2202 (źródła: DC-2201, DC-2202).\n- Powiązane KYC: KYC-00123 (DC-2201), KYC-00124 (DC-2202) (źródła: KYC-00123, KYC-00124).\n- Kluczowe elementy profilu i atrybuty:\n  - scoring: 78 (DC-2201), 92 (DC-2202) (źródło: KYC-00123, KYC-00124).\n  - klasa ryzyka: B (DC-2201), A (DC-2202) (źródła: DC-2201, DC-2202).\n  - DTI: 36,52% (DC-2201), 13,23% (DC-2202) (źródła: DC-2201, DC-2202).\n  - LTV: 80% (w DC-2201) (źródło: DC-2201).\n  - dodatkowe warunki finansowe: kwoty, okresy, oprocentowanie i raty wyszczególnione w DC-2201/DC-2202 i umowach (UM-7788, UM-7789) (źródła: DC-2201, UM-7788; DC-2202, UM-7789).\n- Jak polityka decydowała: POL-RYZYKO-01 (§5) kwalifikuje klasy A–C ze scoring ≥ 60 do decyzji pozytywnej przy spełnieniu limitów (DTI/LTV) — cytat: „Profil klienta: klasa ryzyka A/B … kwalifikuje do decyzji pozytywnej (§5)” (źródło: POL-RYZYKO-01; przykłady: DC-2201, DC-2202).\n\n2) Decyzja warunkowa\n- Przykład: DC-2203 (źródło: DC-2203).\n- Powiązane KYC: KYC-00125 (źródło: KYC-00125).\n- Kluczowe elementy profilu i atrybuty:\n  - scoring: 70 (KYC-00125) — klasa C (źródło: DC-2203 / KYC-00125).\n  - podwyższony poziom zadłużenia (np. 2 czynne leasingi), wartość leasingu netto 180 000 PLN (źródło: DC-2203).\n  - wymagane zabezpieczenia/warunki: podwyższenie opłaty wstępnej lub dodatkowe zabezpieczenie (poręczenie, weksel) (źródło: DC-2203).\n- Jak polityka decydowała: POL-RYZYKO-01 (§5) przewiduje możliwość decyzji WARUNKOWEJ dla klasy C przy konieczności dodatkowych zabezpieczeń — cytat: „dla klasy C dopuszczalna jest decyzja WARUNKOWA, wymagająca dodatkowego zabezpieczenia lub obniżenia ekspozycji” (źródło: POL-RYZYKO-01; DC-2203).\n\n3) Decyzja negatywna\n- Brak konkretnego, odczytanego przykładu w pełnej treści (wzmianka o DC-2250 występuje, ale dokument DC-2250 nie został odczytany). W związku z tym nie można opisać konkretnego przypadku negatywnej decyzji na podstawie źródeł (brak pełnego dokumentu) (stan: brak źródła pełnego przykładu; wzmianka: DC-2250 nieudostępniona).\n- Ogólne determinanty (z grafu i polityki): negatywne decyzje wynikają z przekroczenia limitów DTI/LTV, klasyfikacji w klasie E, negatywnej historii kredytowej lub nieusuwalnych braków dokumentacyjnych — ale dla konkretnego przykładu wymagany jest pełny dokument decyzji negatywnej (potrzebne źródło: DC-2250 lub inna pełna decyzja negatywna) (źródło ogólne: POL-RYZYKO-01 i notatki grafu).\n\nWeryfikacja i zapis do grafu (nauka)\n- Weryfikator ocenił powyższą odpowiedź jako POTWIERDZONĄ (werdykt: POTWIERDZONA) na podstawie dokumentów: DC-2201, DC-2202, DC-2203, KYC-00123, KYC-00124, KYC-00125, POL-RYZYKO-01, UM-7788, UM-7789, UM-7790.\n- Zapisałem (zaktualizowałem graf wiedzy) trzy zweryfikowane fakty (moment nauki):\n  - DC-2201 — fact id: learned::fe92fcc929910116; learning id: learning::47a9938f444e2ad0 (źródła: DC-2201, KYC-00123, POL-RYZYKO-01, UM-7788).\n  - DC-2202 — fact id: learned::da6be58530adcd97; learning id: learning::66035e1d470fa150 (źródła: DC-2202, KYC-00124, POL-RYZYKO-01, UM-7789).\n  - DC-2203 — fact id: learned::3594d901b39a8d71; learning id: learning::9ec527a9be00858e (źródła: DC-2203, KYC-00125, POL-RYZYKO-01, UM-7790).\n- Potwierdzam, że zapis do grafu został wykonany dla tych trzech przypadków.\n\nKrótki wniosek\n- W analizowanym zbiorze decyzje pozytywne wynikają z niskiego/umiarkowanego profilu ryzyka (wysoki scoring, klasy A/B) oraz spełnienia limitów DTI/LTV; decyzje warunkowe występują przy średnim profilu (klasa C, scoring około 70) i wymaganiu dodatkowych zabezpieczeń zgodnie z POL-RYZYKO-01. Nie można opisać konkretnej decyzji negatywnej bez pełnego dokumentu (np. DC-2250) (źródła: DC-2201, DC-2202, DC-2203, POL-RYZYKO-01, KYC-00123/24/25).\n\nCzy chcesz, żebym odczytał i dodał do analizy dokument DC-2250 (przykład decyzji negatywnej), jeśli jest dostępny?",
+      "ocena": "czesciowa",
+      "uzasadnienie_oceny": "Odpowiedź agenta szczegółowo opisuje decyzje pozytywną i warunkową zgodnie z oczekiwaniami, lecz brak jest konkretnego przykładu i pełnej analizy decyzji negatywnej, co jest kluczowe w pytaniu.",
+      "zrodla_oczekiwane": [
+        "DC-2201",
+        "DC-2203",
+        "DC-2250",
+        "KYC-00123",
+        "KYC-00125",
+        "KYC-00456",
+        "POL-AML-01",
+        "POL-RYZYKO-01",
+        "RR-0012"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2201",
+        "DC-2202",
+        "DC-2203",
+        "DC-2250",
+        "KYC-00123",
+        "KYC-00124",
+        "KYC-00125",
+        "POL-RYZYKO-01",
+        "UM-7788",
+        "UM-7789",
+        "UM-7790"
+      ],
+      "pokrycie_zrodel": 0.67,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "3",
+      "id": "P3.4",
+      "pytanie": "Oblicz łączną kwotę odsetek dla wszystkich kredytów/leasingów z zawartymi umowami w zbiorze i podaj źródła.",
+      "oczekiwana": "- Kredyt hipoteczny UM-7788: odsetki 626 649,94 PLN wg pierwotnego HS-7788 (lub 579 719,78 PLN po repricingu wg HS-7794, przy założeniu utrzymania 7,45%).\n  - Kredyt gotówkowy UM-7789: odsetki 15 077,76 PLN (HS-7789).\n  - Leasing UM-7790: część odsetkowa 28 169,56 PLN netto (HS-7790).\n  - **Suma (wariant pierwotny hipoteki):** 626 649,94 + 15 077,76 + 28 169,56 = **669 897,26 PLN**.\n  - (Uwaga: umowa karty UM-7791 nie ma z góry ustalonych odsetek — zależą od wykorzystania limitu; wniosek WN-4508 odrzucono, więc go nie liczymy.)",
+      "odpowiedz_agenta": "Łączna kwota odsetek dla wszystkich kredytów i leasingów wynosi 43 247,32 PLN (źródła: UM-7789, UM-7790, REG-KG-01).\n\nSzczegóły:\n- REG-KG-01, kredyt, 15 077,76 PLN, źródła: REG-KG-01, UM-7789\n- UM-7790, leasing, 28 169,56 PLN, źródło: UM-7790\n\nStatus danych: wszystkie potrzebne dane były dostępne w grafie i w dokumentach — werdykt weryfikatora: POTWIERDZONA (źródła: UM-7789, UM-7790).\n\nUwaga o nauce: zweryfikowany fakt został zapisany do grafu wiedzy (fact_id: learned::ea84a455dce5c102).",
+      "ocena": "zla",
+      "uzasadnienie_oceny": "Odpowiedź agenta pomija kluczową wartość odsetek z kredytu hipotecznego UM-7788, co powoduje znaczne zaniżenie łącznej kwoty odsetek w porównaniu do odpowiedzi oczekiwanej.",
+      "zrodla_oczekiwane": [
+        "HS-7788",
+        "HS-7789",
+        "HS-7790",
+        "HS-7794",
+        "UM-7788",
+        "UM-7789",
+        "UM-7790"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "REG-KG-01",
+        "UM-7789",
+        "UM-7790"
+      ],
+      "pokrycie_zrodel": 0.29,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "3",
+      "id": "P3.5",
+      "pytanie": "Opisz mechanizm i finansowy skutek zmiany wskaźnika NRR 3M dla kredytu hipotecznego — wskaż dokumenty i kwoty.",
+      "oczekiwana": "- NRR 3M spadł z 5,85% (TO-2025-Q1) do 5,35% (TO-2025-Q2), tj. o 0,50 p.p.\n  - Zgodnie z REG-KH-02 §3 (oprocentowanie zmienne, aktualizacja kwartalna, marża stała), oprocentowanie UM-7788 zmieniło się z 7,95% na 7,45% bez aneksu.\n  - Bank sporządził zaktualizowany harmonogram HS-7794 (od raty nr 2): rata spadła z 3 688,83 na **3 531,88 PLN** (o 156,95 PLN).\n  - Łączne odsetki spadły z 626 649,94 do 579 719,78 PLN (oszczędność ok. 46 930,16 PLN przy utrzymaniu 7,45%).\n  - Efekt widoczny na wyciągu HT-00123 (rata 1 = 3 688,83, raty 2–3 = 3 531,88).",
+      "odpowiedz_agenta": "Oto zwięzłe podsumowanie mechanizmu i skutku finansowego zmiany NRR 3M dla kredytu hipotecznego wraz z dokumentami i kwotami — oparte wyłącznie na dokumentach/grafie.\n\n1) Mechanizm (krótko)\n- Oprocentowanie zmienne kredytu hipotecznego = NRR 3M + marża umowna; NRR 3M aktualizowany kwartalnie wg tabel TO-2025-Q* i zmiana jest stosowana zgodnie z postanowieniami umowy (UM-7788). (źródła: TO-2025-Q1, TO-2025-Q2, UM-7788)\n\n2) Konkretne liczby i dokumenty\n- NRR 3M Q1 2025 = 5,85% (TO-2025-Q1).\n- NRR 3M Q2 2025 = 5,35% (TO-2025-Q2).\n- Marża umowna (przykładowo dla LTV ≤ 80%) = 2,10% (UM-7788).\n- Nominalne oprocentowanie = NRR 3M + marża → 7,95% (Q1 2025) → 7,45% (Q2 2025) (TO-2025-Q1, TO-2025-Q2, UM-7788).\n- Dla kredytu opisanego w HS-7788 rata annuitetowa przy oprocentowaniu 7,95% wynosiła 3 688,83 PLN (HS-7788, UM-7788).\n\n3) Finansowy skutek zmiany\n- Spadek NRR 3M z 5,85% do 5,35% obniża nominalne oprocentowanie o 0,50 p.p. (z 7,95% do 7,45%), co skutkuje:\n  - mniejszą miesięczną ratą kapitałowo-odsetkową oraz niższym całkowitym kosztem kredytu w pozostałym okresie (przy niezmienionym harmonogramie i parametrach);\n  - dokładna nowa wysokość raty wymaga obliczenia na podstawie pozostałego kapitału i pozostałego okresu kredytowania (czyli nie jest możliwa do jednoznacznego podania bez tych danych). (źródła: UM-7788, HS-7788)\n\n4) Status wiedzy w grafie\n- Graf zawierał te informacje i powiązane encje: HS-7788, UM-7788 (fakty odczytane z TO-2025-Q1 i TO-2025-Q2 zostały zapisane do grafu).\n- Zapis do grafu: zweryfikowany fakt dodano (ID faktu: learned::b2198efdd6d277c6) oraz dodano wskazówkę jakościową powiązaną z UM-7788 i HS-7788 (ID wskazówki: learning::b2198efdd6d277c6).\n\nŹródła: TO-2025-Q1, TO-2025-Q2, UM-7788, HS-7788.",
+      "ocena": "czesciowa",
+      "uzasadnienie_oceny": "Odpowiedź agenta poprawnie opisuje mechanizm i zmianę stóp procentowych na podstawie wskazanych dokumentów, jednak nie podaje konkretnych wartości nowej raty ani całkowitych odsetek, co stanowi istotny element oczekiwanej odpowiedzi.",
+      "zrodla_oczekiwane": [
+        "HS-7788",
+        "HS-7794",
+        "HT-00123",
+        "REG-KH-02",
+        "TO-2025-Q1",
+        "TO-2025-Q2",
+        "UM-7788"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "HS-7788",
+        "TO-2025-Q",
+        "TO-2025-Q1",
+        "TO-2025-Q2",
+        "UM-7788"
+      ],
+      "pokrycie_zrodel": 0.57,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "3",
+      "id": "P3.6",
+      "pytanie": "Zidentyfikuj wszystkich klientów objętych wzmożonymi środkami bezpieczeństwa (EDD) i opisz podstawę oraz skutki dla ich klasy ryzyka.",
+      "oczekiwana": "- **KL-00456 (Marek Nowicki):** EDD z powodu SAR-0034 i SAR-0041 → RR-0012; klasa ryzyka podniesiona z C do **E**; wstrzymanie nowych kredytów (skutek: odmowa DC-2250).\n  - **KL-00129 (Bursztyn Handel Sp. z o.o.):** EDD z powodu SAR-0052 (nietypowe wpłaty gotówkowe + transakcje z podmiotem powiązanym); klasa ryzyka podniesiona z C do **D**; nowe zaangażowania warunkowe/wstrzymane.\n  - Obaj objęci zakazem tipping-off (POL-AML-01 §7).",
+      "odpowiedz_agenta": "Oto zidentyfikowani klienci EDD wraz z podstawą i skutkami oraz powiązanymi źródłami (ID). Weryfikacja: POTWIERDZONA (źródła: KYC-00129, SAR-0052, KYC-00456, RR-0012, SAR-0034, SAR-0041).\n\n[\n  {\n    \"client_id\": \"KL-00129\",\n    \"client_name\": \"Bursztyn Handel Sp. z o.o.\",\n    \"edd_flag\": true,\n    \"basis_facts\": [\n      { \"fact\": \"Nietypowe wpłaty gotówkowe łącznie ok. 210 000 PLN; możliwe rozbijanie kwot (structuring) i brak ekonomicznego uzasadnienia transakcji.\", \"source_id\": \"SAR-0052\" },\n      { \"fact\": \"Aktualizacja oceny AML do poziomu podwyższonego (klasa D) z wdrożeniem wzmożonych środków bezpieczeństwa (EDD).\", \"source_id\": \"KYC-00129\" }\n    ],\n    \"current_risk_class\": \"D (PODWYŻSZONE)\",\n    \"edd_effects\": [\n      { \"effect\": \"Wzmożony monitoring rachunku.\", \"source_id\": \"SAR-0052\" },\n      { \"effect\": \"Wezwanie o udokumentowanie tytułu i źródła środków.\", \"source_id\": \"KYC-00129\" },\n      { \"effect\": \"Wstrzymanie nowych zaangażowań kredytowych do czasu wyjaśnienia (nowe zaangażowania warunkowe/wstrzymane).\", \"source_id\": \"KYC-00129\" }\n    ]\n  },\n  {\n    \"client_id\": \"KL-00456\",\n    \"client_name\": \"Marek Andrzej Nowicki\",\n    \"edd_flag\": true,\n    \"basis_facts\": [\n      { \"fact\": \"Obroty gotówkowe i przelewy do jurysdykcji wysokiego ryzyka przewyższające deklarowane dochody; structuring i transfery pass-through (SAR-0034, SAR-0041).\", \"source_id\": \"KYC-00456 / SAR-0034 / SAR-0041\" },\n      { \"fact\": \"Raport ryzyka rekomendujący podwyższenie klasy ryzyka do E (wysokie).\", \"source_id\": \"RR-0012\" }\n    ],\n    \"current_risk_class\": \"E (WYSOKIE)\",\n    \"edd_effects\": [\n      { \"effect\": \"Wstrzymanie udzielania nowych produktów kredytowych do czasu wyjaśnienia.\", \"source_id\": \"KYC-00456\" },\n      { \"effect\": \"Wzmożony, częstszy monitoring transakcji i profilu ryzyka.\", \"source_id\": \"KYC-00456\" },\n      { \"effect\": \"Rozważenie zakończenia relacji klienta w przypadku braku satysfakcjonujących wyjaśnień/dokumentacji.\", \"source_id\": \"RR-0012\" }\n    ]\n  }\n]\n\nKrótka konkluzja:\n- W dostępnych danych z grafu i dokumentów zidentyfikowano i zweryfikowano dwóch klientów objętych EDD: KL-00129 (Bursztyn Handel Sp. z o.o.) i KL-00456 (Marek Andrzej Nowicki) (źródła: KYC-00129, SAR-0052, KYC-00456, RR-0012, SAR-0034, SAR-0041).  \n- Nie znaleziono innych klientów EDD w przeszukanych dokumentach; jeśli potrzebujesz pełnej pewności, rekomenduję przeskanowanie dodatkowych repozytoriów/dzienników transakcji (jeśli są poza zasięgiem tych dokumentów).\n\nPotwierdzenie zapisu do grafu (moment nauki):\n- Zapisano do grafu następujące zweryfikowane fakty dla KL-00129:\n  - client_name = \"Bursztyn Handel Sp. z o.o.\" (źródło: KYC-00129).\n  - EDD_basis_summary = \"Nietypowe wpłaty gotówkowe łącznie ok. 210000 PLN, potencjalne structuring; brak ekonomicznego uzasadnienia transakcji\" (źródła: SAR-0052, KYC-00129).\n  - EDD_effects_summary = \"wzmożony monitoring rachunku; wezwanie o udokumentowanie tytułu i źródła środków; wstrzymanie nowych zaangażowań kredytowych do czasu wyjaśnienia\" (źródła: KYC-00129, SAR-0052).\n  - Dodano wskazówkę jakościową (graph_add_learning): \"W grafie brakowało client_name; przy synchronizacji z KYC upewnić się, że pole client_name jest zaimportowane.\"\n(Operacje zapisu wykonane pomyślnie.)\n\nWeryfikator: odpowiedź oceniona jako POTWIERDZONA — brak niezgodności wobec dokumentów wymienionych wyżej (źródła: KYC-00129, SAR-0052, KYC-00456, RR-0012, SAR-0034, SAR-0041).\n\nJeśli chcesz, przeszukam teraz dodatkowe repozytoria/dzienniki transakcyjne lub wykonam zapytanie grafowe po innych tagach (np. wszystkie węzły z flagą EDD lub pola KYC z indeksem EDD), aby upewnić się, że nie ma pominiętych klientów.",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta w pełni pokrywa się z oczekiwaną pod względem identyfikacji klientów, podstaw EDD oraz skutków dla ich klasy ryzyka, bez pominięć i błędów merytorycznych.",
+      "zrodla_oczekiwane": [
+        "KYC-00129",
+        "KYC-00456",
+        "POL-AML-01",
+        "RR-0012",
+        "SAR-0034",
+        "SAR-0041",
+        "SAR-0052"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "KL-00129",
+        "KL-00456",
+        "KYC-00129",
+        "KYC-00456",
+        "RR-0012",
+        "SAR-0034",
+        "SAR-0041",
+        "SAR-0052"
+      ],
+      "pokrycie_zrodel": 0.86,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "3",
+      "id": "P3.7",
+      "pytanie": "Które tabele oprocentowania i opłat obowiązują dla poszczególnych umów, biorąc pod uwagę daty ich zawarcia i zasady aktualizacji?",
+      "oczekiwana": "- Umowy zawarte w I kw. 2025 (UM-7788 z 14.02, UM-7789 z 05.03, UM-7790 z 20.03, UM-7791 z 12.03) bazują na TO-2025-Q1 i TOP-2025-Q1.\n  - Kredyty stałoprocentowe (gotówkowy UM-7789) i leasing (UM-7790) zachowują stopę z dnia zawarcia.\n  - Kredyt hipoteczny UM-7788 (zmienny) jest repricowany od Q2 wg TO-2025-Q2 (nowy harmonogram HS-7794).\n  - Wniosek WN-4506 (10.05.2025, Q2) bazuje na TO-2025-Q2 i TOP-2025-Q2.",
+      "odpowiedz_agenta": "Odpowiedź krótka i źródłowana — na podstawie grafu i dokumentów (patrz źródła wskazane przy każdej pozycji).\n\n1) Zasady aktualizacji (podsumowanie)\n- Tabele oprocentowania kwartalnie zmieniają wartość wskaźnika referencyjnego NRR 3M, co powoduje aktualizację oprocentowania kredytów o stopie zmiennej bez konieczności aneksu do umowy — reguła zapisana w REG-KH-02 i odzwierciedlona w TO-2025-Q1 / TO-2025-Q2; bank sporządza wtedy zaktualizowany harmonogram spłat (przykład: HS-7794) (źródła: REG-KH-02, TO-2025-Q1, TO-2025-Q2, HS-7794).\n\n2) Umowy — obowiązujące tabele oprocentowania i opłat\n\n- UM-7788  \n  - Data zawarcia: 14.02.2025 (źródło: UM-7788)  \n  - Tabela oprocentowania: TO-2025-Q1 obowiązująca 01.01.2025–31.03.2025; po 01.04.2025 obowiązuje TO-2025-Q2 (aktualizacja NRR 3M i zaktualizowany harmonogram HS-7794, bez aneksu) (źródła: UM-7788, TO-2025-Q1, TO-2025-Q2, HS-7794, REG-KH-02).  \n  - Tabela opłat: TOP-2025-Q1 jest powiązana z umową (w umowie odwołanie do tabeli opłat i prowizji) — w dokumentach brak jawnego okresu obowiązywania tej konkretnej wersji tabeli (źródła: UM-7788, TOP-2025-Q1).\n\n- UM-7789  \n  - Data zawarcia: 05.03.2025 (źródło: UM-7789)  \n  - Tabela oprocentowania: TO-2025-Q1 obowiązująca 01.01.2025–31.03.2025 (oprocentowanie określone w powiązaniu z TO-2025-Q1) (źródła: UM-7789, TO-2025-Q1).  \n  - Tabela opłat: TOP-2025-Q1 wskazana w dokumentach powiązanych z umową; brak jawnego okresu ważności tabeli w udostępnionych fragmentach (źródła: UM-7789, TOP-2025-Q1).\n\n- UM-7790 (leasing)  \n  - Data zawarcia: 20.03.2025 (źródło: UM-7790)  \n  - Tabela oprocentowania / stopa leasingowa: TO-2025-Q1 (01.01.2025–31.03.2025) — w dokumentach przypisana stopa leasingowa 9,05% na dzień zawarcia (źródła: UM-7790, TO-2025-Q1).  \n  - Tabela opłat: brak w dokumentach powiązanych z UM-7790 (w umowie jest odnoszenie do regulaminu leasingu REG-LE-04, ale brak szczegółowej tabeli opłat/opłat i prowizji w udostępnionych materiałach) (źródła: UM-7790, REG-LE-04, HS-7790).\n\n3) Braki / co trzeba doprecyzować (konkretne pola)\n- Dokładne okresy obowiązywania tabel opłat TOP-2025-Q1 (i powiązanych wersji) — w dokumentach powiązanych z UM-7788/UM-7789 brak jawnej daty effective_date dla TOP-2025-Q1. (potrzebne źródło: pełny dokument TOP-2025-Q1)  \n- Pełna tabela opłat/prowizji stosowana dla UM-7790 (leasing) — obecnie brak pliku TOP (lub analogicznej tabeli) powiązanego z UM-7790 w dostępnych dokumentach. (potrzebne źródło: TOP dla leasingu lub załącznik opłat w UM-7790)  \n- Potwierdzenie zakresu automatycznych aktualizacji opłat (czy tabele opłat też aktualizują się kwartalnie albo wymagają aneksu) — dokumenty jasno mówią o automatycznej aktualizacji NRR 3M i oprocentowania zmiennego (REG-KH-02), ale nie ma jasnego zapisu o analogicznym mechanizmie dla tabel opłat. (potrzebne źródło: zapisy TOP-2025-* lub regulamin dotyczący TOP)\n\n4) Potwierdzenie zapisu do grafu (nauka)\n- Zapisano do grafu fakt dotyczący UM-7788: powiązanie z TO-2025-Q1 (na dzień zawarcia 14.02.2025) oraz powiązanie z TOP-2025-Q1; zapisano też regułę, że aktualizacja oprocentowania zmiennych stawek następuje automatycznie zgodnie z REG-KH-02 §3, oraz wskazówkę jakościową przypisaną do UM-7788: „Przy aktualizacji NRR 3M sporządzać zaktualizowany harmonogram spłat (np. HS-7794) — nie mylić z aneksem.” (graf zaktualizowany).\n\nPełna lista źródeł użytych powyżej: UM-7788, UM-7789, UM-7790, TO-2025-Q1, TO-2025-Q2, TOP-2025-Q1, TOP-2025-Q2, REG-KH-02, REG-LE-04, HS-7788, HS-7794, HS-7790.\n\nJeżeli chcesz, mogę:\n- pobrać/załadować pełne pliki TOP-2025-Q1 i TOP-2025-Q2 (żeby potwierdzić daty obowiązywania tabel opłat),  \n- albo doprecyzować, czy dla UM-7789/UM-7790 należy stosować najnowszą wersję tabely opłat obowiązującą po dacie zawarcia (i zapisać to do grafu).",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta zawiera kompletne i zgodne z oczekiwaniami informacje dotyczące tabel oprocentowania, dat umów, zasad aktualizacji oraz powiązanych dokumentów, włączając szczegóły o automatycznej aktualizacji zmiennej stopy i odpowiednich harmonogramach.",
+      "zrodla_oczekiwane": [
+        "REG-KG-01",
+        "REG-KH-02",
+        "TO-2025-Q1",
+        "TO-2025-Q2",
+        "TOP-2025-Q1",
+        "TOP-2025-Q2",
+        "UM-7788",
+        "WN-4506"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "HS-7788",
+        "HS-7790",
+        "HS-7794",
+        "REG-KH-02",
+        "REG-LE-04",
+        "TO-2025-Q1",
+        "TO-2025-Q2",
+        "TOP-2025",
+        "TOP-2025-Q1",
+        "TOP-2025-Q2",
+        "UM-7788",
+        "UM-7789",
+        "UM-7790"
+      ],
+      "pokrycie_zrodel": 0.75,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "3",
+      "id": "P3.8",
+      "pytanie": "Sprawdź spójność danych osobowych i finansowych klientki KL-00124 we wszystkich dokumentach, w których występuje.",
+      "oczekiwana": "- Katarzyna Maria Lewandowska, PESEL 90111067321 — identyczne w KYC-00124, ZD-4503, WN-4502, UM-7789.\n  - Dochód netto 8 200 PLN — spójny w ZD-4503, WN-4502, DC-2202.\n  - Kredyt 50 000 PLN / 60 mies / 10,90% / rata 1 084,63 PLN — spójny w WN-4502, DC-2202, UM-7789, HS-7789.\n  - Klasa ryzyka A (scoring 92) — KYC-00124, potwierdzona w DC-2202.\n  - Brak sprzeczności.",
+      "odpowiedz_agenta": "1) Dokumenty, w których występuje klientka KL-00124: KYC-00124, WN-4502, DC-2202, UM-7789, HS-7789, ZD-4503. (źródła: KYC-00124, WN-4502, DC-2202, UM-7789, HS-7789, ZD-4503)\n\n2) Dane osobowe spójne we wszystkich powiązanych dokumentach: imię i nazwisko Katarzyna Maria Lewandowska (KYC-00124, WN-4502, ZD-4503, UM-7789), PESEL 90111067321 (KYC-00124, WN-4502, ZD-4503, UM-7789), data urodzenia 10.11.1990 (KYC-00124), adres ul. Słoneczna 5 m.2, 80-100 Gdańsk (KYC-00124, WN-4502, ZD-4503, UM-7789), telefon +48 513 000 124 i e‑mail k.lewandowska@test.example (KYC-00124, WN-4502), dokument tożsamości dowód DEF 246810 ważny do 22.03.2032 (KYC-00124). (źródła: KYC-00124, WN-4502, ZD-4503, UM-7789)\n\n3) Dane finansowe spójne: dochód netto 8 200,00 PLN/mies. (ZD-4503, KYC-00124), kwota kredytu 50 000,00 PLN, okres 60 miesięcy, oprocentowanie stałe 10,90%, rata 1 084,63 PLN, prowizja 2 000 PLN; decyzja kredytowa 25.02.2025 (DC-2202), wypłata uruchomienie 07.03.2025 i harmonogram rat: pierwsza 10.04.2025, ostatnia 10.03.2030 (WN-4502, DC-2202, UM-7789). (źródła: ZD-4503, WN-4502, DC-2202, UM-7789, HS-7789)\n\n4) Wykryte niezgodności/rozbieżności: brak niezgodności w dokumentach bezpośrednio powiązanych z KL-00124 (KYC-00124, WN-4502, DC-2202, UM-7789, HS-7789, ZD-4503). (źródła: powyższe)\n\n5) Uwaga o potencjalnym błędzie źródłowym: narzędzie weryfikujące wskazało różne wartości (np. dokumenty UM-7788/HS-7788 z kwotą 480 000 PLN i oprocentowaniem 7,95%). Te dokumenty hipoteczne nie są powiązane z KL-00124 i nie występują w grafie jako dokumenty klientki — możliwe pomylenie UM-7788/HS-7788 (hipoteczne) z UM-7789/HS-7789 (gotówkowy). Zalecam nie używać UM-7788 dla tego klienta bez potwierdzenia powiązania. (źródła: wynik weryfikatora; sprawdzenie repozytorium: brak powiązania UM-7788 z KL-00124)\n\n6) Braki/dane do uzupełnienia w KYC/zbiorze akt: brak zdeklarowanych wydatków (cash‑out / zobowiązań szczegółowych), brak pola „adres korespondencyjny”, brak NIP klienta (jeśli wymagany) oraz brak informacji o paszporcie (jeśli stosowne). (źródła: KYC-00124, ZD-4503 — pola null/brakujące)\n\n7) Rekomendacje krótkie: a) potwierdzić kopię dowodu osobistego i zarchiwizować datę ważności (KYC-00124); b) uzupełnić KYC o adres korespondencyjny i szczegółowe wydatki/obciążenia (dowody: wyciągi/rachunki) przed ostatecznym rozliczeniem kredytu; c) zweryfikować, czy jakiekolwiek procesy/raporty przypadkowo używają UM-7788 zamiast UM-7789; d) w razie potrzeby dopisać notę wyjaśniającą do pliku klienta. (źródła: KYC-00124, WN-4502, DC-2202, retriever checks)\n\n8) Nauka / zapis do grafu: zweryfikowane fakty dotyczące KL-00124 (dane osobowe i warunki kredytu) oraz wskazówka jakościowa o możliwym myleniu dokumentów UM-7788/UM-7789 zostały zapisane do grafu wiedzy, aby zapobiec przyszłym pomyłkom. (Zapis wykonano na podstawie dokumentów: KYC-00124, WN-4502, DC-2202, UM-7789, HS-7789, ZD-4503 — zapis w grafie potwierdzony)\n\nJeśli chcesz, mogę: A) wygenerować e‑mail/wzór notatki do aktualizacji KYC z listą braków; B) automatycznie oznaczyć w systemie dokument UM-7788 jako „niepowiązany z KL-00124” (jeśli chcesz, wykonam krok aktualizacji grafu). Which?",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta jest merytorycznie zgodna z odpowiedzią oczekiwaną, uwzględnia wszystkie kluczowe dane osobowe i finansowe oraz potwierdza ich spójność we wskazanych dokumentach, dodatkowo rozszerzając analizę o uwagi i rekomendacje bez sprzeczności.",
+      "zrodla_oczekiwane": [
+        "DC-2202",
+        "HS-7789",
+        "KYC-00124",
+        "UM-7789",
+        "WN-4502",
+        "ZD-4503"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2202",
+        "HS-7788",
+        "HS-7789",
+        "KL-00124",
+        "KYC-00124",
+        "UM-7788",
+        "UM-7789",
+        "WN-4502",
+        "ZD-4503"
+      ],
+      "pokrycie_zrodel": 1.0,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "niepotwierdzone/niepełne → KOLEJNA RUNDA szukania w dokumentach",
+        "niepotwierdzone/niepełne → KOLEJNA RUNDA szukania w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "3",
+      "id": "P3.9",
+      "pytanie": "Na podstawie polityk banku opisz, jak przetwarzany jest wniosek klienta wysokiego ryzyka AML oraz jakie ograniczenia praw wynikają z zasad ochrony danych.",
+      "oczekiwana": "- Ocena ryzyka i klasyfikacja: POL-RYZYKO-01 (klasy A–E, override jakościowy) w powiązaniu z POL-AML-01 (CDD/EDD, monitoring, SAR).\n  - Dla klienta wysokiego ryzyka: wzmożone środki (EDD), ustalenie źródła środków, możliwe wstrzymanie nowych usług i blokady; zakaz tipping-off.\n  - RODO (POL-DANE-01): przetwarzanie na podstawie obowiązku prawnego (AML) — prawo do usunięcia i sprzeciwu NIE ma zastosowania do dokumentacji AML; okresy przechowywania wynikają z przepisów AML.\n  - Przykład zastosowania: KL-00456/DC-2250 oraz KL-00129/SAR-0052.",
+      "odpowiedz_agenta": "Odpowiedź oparta na politykach banku Nordvik Finanse S.A. (źródła: POL-AML-01, POL-DANE-01, KYC-00456, SAR-0034, SAR-0052, UM-7788).\n\nJak przetwarzany jest wniosek klienta ocenionego jako wysokie ryzyko AML\n\n1) Wstępna identyfikacja i KYC\n- Wniosek powiązany jest z kartą KYC klienta; przy podwyższonym ryzyku następuje podniesienie poziomu środków należytej staranności (KYC-00456, UM-7788).\n\n2) Wzmożone środki należytej staranności (EDD)\n- Stosuje się EDD: ustalenie źródła majątku i źródła środków, bardziej szczegółowe dokumentowanie, częstsze przeglądy (co najmniej co 6 miesięcy) oraz bieżące monitorowanie transakcji (POL-AML-01 §2; KYC-00456).\n\n3) Analiza i zgłoszenie podejrzanych transakcji (SAR)\n- Jeśli wystąpią przesłanki, analityk AML przygotowuje zgłoszenie SAR, które musi zostać zaakceptowane przez MLRO, a następnie przekazane do KJAF (POL-AML-01 §6; SAR-0034, SAR-0052).\n\n4) Działania operacyjne i ograniczenia świadczonych usług\n- Bank może wstrzymać udzielanie nowych produktów/usług (np. nowych kredytów) lub zablokować transakcje do wyjaśnienia sytuacji (POL-AML-01 §7; KYC-00456). Monitoring i przeglądy klasy ryzyka są kontynuowane i mogą prowadzić do aktualizacji profilu ryzyka.\n\n5) Dokumentacja i nadzór\n- Wszystkie kroki, decyzje i zgłoszenia są dokumentowane (SAR, KYC) oraz podlegają akceptacjom wewnętrznym (analityk → MLRO) i zewnętrznym zgłoszeniom (KJAF) (SAR-0034, POL-AML-01 §6).\n\nOgraniczenia praw wynikające z zasad ochrony danych osobowych\n\n- Podstawy prawne przetwarzania: dane związane z obsługą wniosku i AML przetwarzane są m.in. na podstawie obowiązku prawnego (przepisy AML), realizacji umowy oraz innych podstaw wymienionych w polityce ochrony danych (POL-DANE-01 §3).\n\n- Zakaz ujawniania (tipping-off): bank nie może informować klienta o tym, że złożono wobec niego zgłoszenie SAR ani ujawniać działań wyjaśniających, gdyż obowiązuje zakaz ujawniania w procedurach AML (POL-AML-01 §7; SAR-0034, SAR-0052).\n\n- Ograniczenia praw klienta: prawa takie jak usunięcie danych czy sprzeciw wobec przetwarzania nie mają zastosowania wobec danych przetwarzanych na podstawie obowiązku prawnego (np. dokumentacja AML) — patrz zasady wyjątków w POL-DANE-01 (§3 i powiązane sekcje).\n\nPodsumowanie krótkie\n- Wniosek klienta wysokiego ryzyka podlega EDD, akceptacji MLRO przy podejrzeniach, zgłoszeniu SAR do KJAF, wzmożonemu monitoringowi i ewentualnemu wstrzymaniu usług. Jednocześnie obowiązują szczególne ograniczenia informacyjne (zakaz tipping-off) oraz ograniczenia w korzystaniu z niektórych praw wynikających z RODO, jeśli przetwarzanie opiera się na obowiązku prawnym (źródła: POL-AML-01, POL-DANE-01, KYC-00456, SAR-0034, SAR-0052, UM-7788).\n\nZapis do grafu\n- Zdobyta i zweryfikowana wiedza została zapisana do grafu wiedzy jako learned::0ac9349a59b7ad4b (źródła: POL-AML-01, POL-DANE-01, KYC-00456, SAR-0034, SAR-0052, UM-7788).",
+      "ocena": "dobra",
+      "uzasadnienie_oceny": "Odpowiedź agenta poprawnie odzwierciedla kluczowe aspekty polityk AML i ochrony danych, w tym EDD, procedury SAR, zakaz tipping-off oraz ograniczenia praw wynikające z przepisów RODO, zgodnie z odpowiedzią oczekiwaną.",
+      "zrodla_oczekiwane": [
+        "DC-2250",
+        "KYC-00129",
+        "KYC-00456",
+        "POL-AML-01",
+        "POL-DANE-01",
+        "POL-RYZYKO-01",
+        "SAR-0052"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "KYC-00456",
+        "POL-AML-01",
+        "POL-DANE-01",
+        "SAR-0034",
+        "SAR-0052",
+        "UM-7788"
+      ],
+      "pokrycie_zrodel": 0.57,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "nie znaleziono w pamięci/grafie → przeszukuję DOKUMENTY",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": true,
+      "pamiec_zaktualizowana": true
+    },
+    {
+      "zestaw": "3",
+      "id": "P3.10",
+      "pytanie": "Zbuduj pełną mapę powiązań węzła TO-2025-Q1 — wskaż wszystkie dokumenty, które z niego korzystają, i wyjaśnij, dlaczego jest to „wspólny węzeł\" istotny dla spójności zbioru.",
+      "oczekiwana": "- TO-2025-Q1 jest przywoływana przez: REG-KH-02, REG-KG-01, REG-LE-04, REG-KK-03 (regulaminy), DC-2201, DC-2202, DC-2203, DC-2204 (decyzje), UM-7788, UM-7789, UM-7790, UM-7791 (umowy), HS-7788, HS-7789, HS-7790 (harmonogramy), WN-4502, WN-4503, WN-4504 (wnioski).\n  - Ustala wspólną wartość NRR 3M (5,85%) i marże/stopy dla wielu produktów — jej zmiana (TO-2025-Q2) propaguje się na oprocentowanie umów o stopie zmiennej (repricing hipoteki, HS-7794).\n  - Dlatego jest kluczowa dla spójności liczbowej całego zbioru.",
+      "odpowiedz_agenta": "{\n  \"node\": {\n    \"id\": \"TO-2025-Q1\",\n    \"type\": \"Node\"\n  },\n  \"linked_entities\": [\n    {\n      \"id\": \"REG-KH-02\",\n      \"type\": \"Document\",\n      \"relation\": \"GOVERNED_BY\",\n      \"direction\": \"TO-2025-Q1 -> REG-KH-02\",\n      \"hop_distance\": 1,\n      \"source\": \"REG-KH-02\"\n    },\n    {\n      \"id\": \"POL-RYZYKO-01\",\n      \"type\": \"Policy\",\n      \"relation\": \"APPLIES_POLICY\",\n      \"direction\": \"POL-RYZYKO-01 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"POL-RYZYKO-01\"\n    },\n    {\n      \"id\": \"TOP-2025-Q1\",\n      \"type\": \"Node\",\n      \"relation\": \"GOVERNED_BY\",\n      \"direction\": \"TO-2025-Q1 -> TOP-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"TOP-2025-Q1\"\n    },\n    {\n      \"id\": \"DC-2201\",\n      \"type\": \"Document\",\n      \"relation\": \"USES_RATE_TABLE\",\n      \"direction\": \"DC-2201 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"DC-2201\"\n    },\n    {\n      \"id\": \"DC-2202\",\n      \"type\": \"Document\",\n      \"relation\": \"USES_RATE_TABLE\",\n      \"direction\": \"DC-2202 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"DC-2202\"\n    },\n    {\n      \"id\": \"DC-2203\",\n      \"type\": \"Document\",\n      \"relation\": \"USES_RATE_TABLE\",\n      \"direction\": \"DC-2203 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"DC-2203\"\n    },\n    {\n      \"id\": \"DC-2204\",\n      \"type\": \"Document\",\n      \"relation\": \"USES_RATE_TABLE\",\n      \"direction\": \"DC-2204 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"DC-2204\"\n    },\n    {\n      \"id\": \"UM-7788\",\n      \"type\": \"Document\",\n      \"relation\": \"USES_RATE_TABLE\",\n      \"direction\": \"UM-7788 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"UM-7788\"\n    },\n    {\n      \"id\": \"UM-7789\",\n      \"type\": \"Document\",\n      \"relation\": \"USES_RATE_TABLE\",\n      \"direction\": \"UM-7789 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"UM-7789\"\n    },\n    {\n      \"id\": \"UM-7790\",\n      \"type\": \"Document\",\n      \"relation\": \"USES_RATE_TABLE\",\n      \"direction\": \"UM-7790 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"UM-7790\"\n    },\n    {\n      \"id\": \"UM-7791\",\n      \"type\": \"Document\",\n      \"relation\": \"USES_RATE_TABLE\",\n      \"direction\": \"UM-7791 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"UM-7791\"\n    },\n    {\n      \"id\": \"HS-7788\",\n      \"type\": \"Document\",\n      \"relation\": \"HAS_SCHEDULE\",\n      \"direction\": \"HS-7788 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"HS-7788\"\n    },\n    {\n      \"id\": \"HS-7790\",\n      \"type\": \"Document\",\n      \"relation\": \"USES_RATE_TABLE\",\n      \"direction\": \"HS-7790 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"HS-7790\"\n    },\n    {\n      \"id\": \"WN-4504\",\n      \"type\": \"Document\",\n      \"relation\": \"USES_RATE_TABLE\",\n      \"direction\": \"WN-4504 -> TO-2025-Q1\",\n      \"hop_distance\": 1,\n      \"source\": \"WN-4504\"\n    }\n  ],\n  \"documents_using\": [\n    \"REG-KH-02\",\n    \"POL-RYZYKO-01\",\n    \"TOP-2025-Q1\",\n    \"DC-2201\",\n    \"DC-2202\",\n    \"DC-2203\",\n    \"DC-2204\",\n    \"UM-7788\",\n    \"UM-7789\",\n    \"UM-7790\",\n    \"UM-7791\",\n    \"HS-7788\",\n    \"HS-7790\",\n    \"WN-4504\"\n  ],\n  \"rationale\": [\n    \"TO-2025-Q1 jest powiązany i cytowany przez regulaminy (REG-KH-02), decyzje kredytowe (DC-2201..DC-2204), umowy (UM-7788..UM-7791) oraz harmonogramy (HS-7788, HS-7790), co czyni go centralnym źródłem parametrów (np. oprocentowania) koniecznych do spójnych obliczeń.\",\n    \"Jako wspólny węzeł tabeli oprocentowania zapewnia spójność stosowania stawek i zasad pomiędzy politykami ryzyka (POL-RYZYKO-01), regulaminami produktów (REG-KH-02) oraz dokumentami wykonawczymi (decyzje, umowy, harmonogramy).\",\n    \"Wiele dokumentów bezpośrednio odwołuje się do TO-2025-Q1 (USES_RATE_TABLE/HAS_SCHEDULE), więc aktualizacje tej tabeli mają szeroki wpływ — potwierdza to rolę węzła jako punktu koordynacji i źródła prawdy dla oprocentowania.\"\n  ],\n  \"graph_update_confirmation\": {\n    \"learned_fact_id\": \"learned::60a2b4c4072bd730\",\n    \"learning_id\": \"learning::03ed3f1437a70ae6\",\n    \"status\": \"saved\"\n  }\n}\n\nKrótki komentarz: odpowiedź została zbudowana na podstawie zapytań do pamięci grafowej (graph_search) i zweryfikowana wewnętrznie — graf użyty jako źródło (zapis potwierdzony).",
+      "ocena": "czesciowa",
+      "uzasadnienie_oceny": "Odpowiedź agenta obejmuje większość dokumentów z oczekiwanej listy, ale brakuje w niej kilku kluczowych pozycji (REG-KG-01, REG-LE-04, REG-KK-03, HS-7789, WN-4502, WN-4503) oraz nie podaje wyraźnej wartości NRR 3M (5,85%) i bezpośredniego wpływu na stopę zmienną i repricing hipoteki, co obniża jej kompletność merytoryczną.",
+      "zrodla_oczekiwane": [
+        "HS-7794",
+        "TO-2025-Q1",
+        "TO-2025-Q2"
+      ],
+      "zrodla_w_odpowiedzi": [
+        "DC-2201",
+        "DC-2202",
+        "DC-2203",
+        "DC-2204",
+        "HS-7788",
+        "HS-7790",
+        "POL-RYZYKO-01",
+        "REG-KH-02",
+        "TO-2025-Q1",
+        "TOP-2025-Q1",
+        "UM-7788",
+        "UM-7789",
+        "UM-7790",
+        "UM-7791",
+        "WN-4504"
+      ],
+      "pokrycie_zrodel": 0.33,
+      "zdarzenia": [
+        "odpytuję pamięć GRAFOWĄ (Neo4j)",
+        "formułuję odpowiedź",
+        "WERYFIKUJĘ odpowiedź w dokumentach",
+        "odpytuję pamięć GRAFOWĄ (Neo4j)"
+      ],
+      "fallback_do_dokumentow": false,
+      "pamiec_zaktualizowana": true
+    }
+  ],
+  "statystyki": {
+    "1": {
+      "plik": "ZESTAW-1-jeden-dokument.md",
+      "liczba_pytan": 18,
+      "dobra": 15,
+      "czesciowa": 3,
+      "zla": 0,
+      "blad_oceny": 0,
+      "dokladnosc_dobra": 0.833,
+      "fallback_count": 2,
+      "memory_updates": 13
+    },
+    "2": {
+      "plik": "ZESTAW-2-powiazania.md",
+      "liczba_pytan": 14,
+      "dobra": 10,
+      "czesciowa": 4,
+      "zla": 0,
+      "blad_oceny": 0,
+      "dokladnosc_dobra": 0.714,
+      "fallback_count": 4,
+      "memory_updates": 11
+    },
+    "3": {
+      "plik": "ZESTAW-3-zlozone.md",
+      "liczba_pytan": 10,
+      "dobra": 6,
+      "czesciowa": 3,
+      "zla": 1,
+      "blad_oceny": 0,
+      "dokladnosc_dobra": 0.6,
+      "fallback_count": 6,
+      "memory_updates": 10
+    }
+  }
+}
