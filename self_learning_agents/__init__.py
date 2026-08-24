@@ -1,7 +1,7 @@
-"""Ogólny agent-orkiestrator zbudowany na bibliotece deepagents (LangGraph).
+"""System Q&A z pamięcią długoterminową i grafem wiedzy (deepagents + Neo4j).
 
-Główny agent (orkiestrator) planuje pracę i deleguje pod-zadania do
-wyspecjalizowanych subagentów przez wbudowane narzędzie ``task``.
+Orkiestrator prowadzi przepływ i deleguje zadania do subagentów, korzystając z
+pamięci grafowej (GraphRAG) i ucząc się między kolejnymi uruchomieniami.
 """
 
 from self_learning_agents.agent import build_orchestrator

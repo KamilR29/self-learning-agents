@@ -1,6 +1,6 @@
 """Pakiet narzędzi (LangChain ``@tool``) dla agentów RAG."""
 
-from orchestrator.tools.document_tools import (
+from simple_agents.tools.document_tools import (
     list_documents,
     read_document,
     search_documents,

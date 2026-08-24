@@ -16,7 +16,6 @@ weryfikacja, kolejne rundy). Wyniki + oceny + statystyki trafiają do
 Użycie:
     python evaluate-self-learning.py --limit 2         # po 2 pytania z każdego zestawu
     python evaluate-self-learning.py --skip-graph      # pomiń budowę grafu (Neo4j)
-    python evaluate-self-learning.py --skip-memory-bootstrap
 
 Wymaga OPENAI_API_KEY (agent + sędzia). GraphRAG wymaga NEO4J_URI/USERNAME/PASSWORD.
 """
@@ -56,21 +55,6 @@ _ID_RE = re.compile(
     r"\b(?:KYC|KL|WN|DC|UM|HS|REG-[A-ZĄĆĘŁŃÓŚŹŻ]+|TOP|TO|POL-[A-ZĄĆĘŁŃÓŚŹŻ]+|SAR|RR|ZD|HT)-[0-9A-Za-z-]+\b"
 )
 
-BOOTSTRAP_MEMORY_PROMPT = (
-    "Zadanie wstępne (budowa pamięci): zapoznaj się z korpusem dokumentów banku "
-    "Nordvik. Użyj list_documents, aby poznać zbiór, i przejrzyj reprezentatywne "
-    "dokumenty (przez subagenta retriever). Następnie ZAPISZ do pamięci zwięzłą "
-    "wiedzę o zbiorze: typy dokumentów, główne łańcuchy powiązań (np. "
-    "wniosek → decyzja → umowa → harmonogram; transakcje → SAR → raport ryzyka → "
-    "aktualizacja KYC → decyzja) oraz istotne, powtarzalne stałe. Zapisz to "
-    "narzędziem edit_file w pliku /memories/AGENTS.md (sekcja „Wnioski z "
-    "interakcji”). Nie kopiuj całych dokumentów — tylko esencję i ID źródeł."
-)
-
-
-# --------------------------------------------------------------------------- #
-# Parsowanie pytań                                                              #
-# --------------------------------------------------------------------------- #
 def parse_questions(path: Path) -> list[dict]:
     text = path.read_text(encoding="utf-8")
     out: list[dict] = []
@@ -89,9 +73,6 @@ def parse_questions(path: Path) -> list[dict]:
     return out
 
 
-# --------------------------------------------------------------------------- #
-# Strumień: odpowiedź + zdarzenia (widoczność „nie znalazł → aktualizuje →...”) #
-# --------------------------------------------------------------------------- #
 def _text(content) -> str:
     if isinstance(content, str):
         return content.strip()
@@ -144,20 +125,17 @@ def run_with_events(agent, prompt: str, live: bool = True) -> tuple[str, list[st
                         elif sub == "answerer":
                             emit("formułuję odpowiedź")
                     elif name in ("graph_add_learned_fact", "graph_add_learning", "graph_update"):
-                        emit("📝 AKTUALIZUJĘ GRAF (zapis wiedzy/wskazówki)")
+                        emit("AKTUALIZUJĘ GRAF (zapis wiedzy/wskazówki)")
                     elif name in ("edit_file", "write_file"):
                         fp = str(args.get("file_path", "")).lower()
                         if "memor" in fp:
-                            emit("📝 AKTUALIZUJĘ PAMIĘĆ (zapis nowej wiedzy)")
+                            emit("AKTUALIZUJĘ PAMIĘĆ (zapis nowej wiedzy)")
                 txt = _text(msg.content)
                 if txt and not getattr(msg, "tool_calls", None):
                     last_text = txt
     return last_text, events
 
 
-# --------------------------------------------------------------------------- #
-# Sędzia (ten sam model co agent)                                               #
-# --------------------------------------------------------------------------- #
 JUDGE_PROMPT = """Jesteś rygorystycznym sędzią oceniającym odpowiedzi systemu Q&A.
 Porównaj ODPOWIEDŹ AGENTA z ODPOWIEDZIĄ OCZEKIWANĄ na PYTANIE. Oceń tylko zgodność
 merytoryczną (kluczowe fakty i liczby), ignorując styl.
@@ -186,9 +164,6 @@ def judge(model, question: str, expected: str, answer: str) -> dict:
         return {"ocena": "blad_oceny", "uzasadnienie": f"Błąd sędziego: {exc!r}"}
 
 
-# --------------------------------------------------------------------------- #
-# Główny przebieg                                                               #
-# --------------------------------------------------------------------------- #
 def main() -> None:
     load_dotenv()
     ap = argparse.ArgumentParser()
@@ -196,19 +171,18 @@ def main() -> None:
     ap.add_argument("--limit", type=int, default=None, help="maks. pytań z każdego zestawu")
     ap.add_argument("--model", default=None, help="model agentów i sędziego")
     ap.add_argument("--skip-graph", action="store_true", help="pomiń budowę grafu (Neo4j)")
-    ap.add_argument("--skip-memory-bootstrap", action="store_true", help="pomiń budowę pamięci md")
     ap.add_argument("--docs-limit", type=int, default=0, help="ile dokumentów do grafu (0=wszystkie)")
     args = ap.parse_args()
 
-    # model_id = model SUBAGENTÓW i SĘDZIEGO (nie zmieniamy sędziego).
-    # Orkiestrator ma osobny, mocniejszy model (ORCHESTRATOR_MODEL w agent.py).
+    # model_id = model subagentów i sędziego; orkiestrator ma osobny, mocniejszy
+    # model (ORCHESTRATOR_MODEL w agent.py)
     model_id = args.model or os.environ.get("SUBAGENT_MODEL", DEFAULT_MODEL)
     agent = build_orchestrator(subagent_model=model_id)   # orkiestrator deepagents prowadzi przepływ
     judge_model = init_chat_model(model_id, max_retries=8)  # backoff na limity 429
     orch_id = os.environ.get("ORCHESTRATOR_MODEL", ORCHESTRATOR_MODEL)
     print(f"Model orkiestratora: {orch_id} | subagenci i sędzia: {model_id}")
 
-    # ---- FAZA 1: BUDOWA GRAFU ----
+    # FAZA 1: budowa grafu wiedzy
     print("\n===== FAZA 1: BUDOWA WIEDZY =====")
     if args.skip_graph:
         print("[graf] pominięto (--skip-graph)")
@@ -223,7 +197,7 @@ def main() -> None:
             print(f"      [graf] nieudane: {exc!r} — kontynuuję bez grafu.")
     print("[przepływ] prowadzony przez orkiestratora deepagents (reguły w prompcie).")
 
-    # ---- FAZA 2: Q&A (orkiestrator deepagents) ----
+    # FAZA 2: odpowiadanie na pytania (przepływ prowadzi orkiestrator)
     print("\n===== FAZA 2: ODPOWIADANIE NA PYTANIA =====")
     WYNIKI_DIR.mkdir(exist_ok=True)
     results: list[dict] = []
@@ -238,7 +212,7 @@ def main() -> None:
 
         for q in questions:
             print(f"  [{q['id']}] {q['question'][:70]}...")
-            # Pomiar aktualizacji pamięci Z BAZY: liczba węzłów wiedzy PRZED pytaniem.
+            # pomiar aktualizacji pamięci wprost z bazy: liczba węzłów wiedzy przed pytaniem
             mem_before = count_learned_nodes()
             try:
                 answer, events = run_with_events(agent, q["question"])
@@ -253,10 +227,9 @@ def main() -> None:
             fallback = any("DOKUMENTY" in e for e in events)
             fb_events: list[str] = []
 
-            # FEEDBACK sterowany PROMPTEM: gdy ocena zła/częściowa, przekazujemy
-            # orkiestratorowi informację zwrotną; wg zasady 5 z promptu ma on
-            # przetworzyć uwagę, doszukać brakujących danych w dokumentach i
-            # UZUPEŁNIĆ GRAF (a nie tylko dopisać wskazówkę).
+            # feedback sterowany promptem: przy ocenie zła/częściowa przekazujemy
+            # orkiestratorowi uwagę; wg zasady 5 z promptu ma doszukać brakujących
+            # danych w dokumentach i uzupełnić graf, a nie tylko dopisać wskazówkę
             if verdict["ocena"] in ("zla", "czesciowa"):
                 fb_prompt = (
                     f"INFORMACJA ZWROTNA do wcześniejszego pytania: „{q['question']}”. "
@@ -271,13 +244,12 @@ def main() -> None:
                 )
                 try:
                     _, fb_events = run_with_events(agent, fb_prompt, live=False)
-                    print("      · 📌 feedback → uzupełnienie grafu + wskazówka (sterowane promptem)")
+                    print("      · feedback → uzupełnienie grafu + wskazówka (sterowane promptem)")
                 except Exception as exc:
                     print(f"      · feedback nieudany: {exc!r}")
 
-            # Aktualizacja pamięci = realny przyrost węzłów wiedzy w grafie
-            # (obejmuje zapis po kroku 6 oraz po feedbacku). Gdy brak Neo4j —
-            # awaryjnie polegamy na sygnale ze strumienia.
+            # aktualizacja pamięci = realny przyrost węzłów wiedzy w grafie (zapis
+            # po kroku 6 i po feedbacku); bez Neo4j polegamy na sygnale ze strumienia
             mem_after = count_learned_nodes()
             if mem_before >= 0 and mem_after >= 0:
                 mem_upd = mem_after > mem_before
@@ -313,7 +285,7 @@ def _write_outputs(results: list[dict], stats: dict) -> None:
         json.dumps({"wyniki": results, "statystyki": stats}, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
-    icon = {"dobra": "✅", "czesciowa": "🟡", "zla": "❌", "blad_oceny": "⚠️"}
+    icon = {"dobra": "[OK]", "czesciowa": "[~]", "zla": "[X]", "blad_oceny": "[!]"}
     lines = ["# Wyniki ewaluacji (self_learning_agents)\n"]
     for r in results:
         lines += [

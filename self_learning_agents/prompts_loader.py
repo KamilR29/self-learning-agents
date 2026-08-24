@@ -14,8 +14,7 @@ def load_prompt(name: str) -> str:
     """Wczytaj prompt z pliku ``prompts/<name>.md``.
 
     Args:
-        name: Nazwa pliku bez rozszerzenia, np. ``"orchestrator"`` lub
-            ``"research-agent"``.
+        name: Nazwa pliku bez rozszerzenia, np. ``"orchestrator"`` lub ``"retriever"``.
     """
     path = PROMPTS_DIR / f"{name}.md"
     if not path.is_file():

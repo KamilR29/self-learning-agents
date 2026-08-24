@@ -6,14 +6,14 @@ import os
 
 from deepagents import create_deep_agent
 
-from orchestrator.prompts_loader import load_prompt
-from orchestrator.subagents import subagents
+from simple_agents.prompts_loader import load_prompt
+from simple_agents.subagents import subagents
 
-# Model SUBAGENTÓW (retriever, answerer) — przypinany do każdego subagenta, żeby
-# NIE dziedziczyli (droższego) modelu orkiestratora.
+# Model subagentów (retriever, answerer) — przypinany do każdego z nich, żeby
+# nie odziedziczyli droższego modelu orkiestratora.
 DEFAULT_MODEL = "openai:gpt-4o-mini"
 
-# Model samego ORKIESTRATORA (planowanie/przepływ). Mocniejszy model tylko tutaj.
+# Model samego orkiestratora (planowanie i przepływ). Mocniejszy model tylko tutaj.
 ORCHESTRATOR_MODEL = "openai:gpt-5-mini"
 
 
@@ -39,7 +39,7 @@ def build_orchestrator(
     orch_id = orchestrator_model or os.environ.get("ORCHESTRATOR_MODEL", ORCHESTRATOR_MODEL)
     sub_id = subagent_model or os.environ.get("SUBAGENT_MODEL", DEFAULT_MODEL)
 
-    # Przypnij model subagentom, żeby NIE dziedziczyli modelu orkiestratora.
+    # przypięcie modelu subagentom, żeby nie dziedziczyli modelu orkiestratora
     subagents_pinned = [{**sa, "model": sub_id} for sa in subagents]
 
     return create_deep_agent(

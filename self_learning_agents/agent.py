@@ -19,13 +19,13 @@ from deepagents.backends import CompositeBackend, FilesystemBackend, StateBacken
 from self_learning_agents.prompts_loader import load_prompt
 from self_learning_agents.subagents import subagents
 
-# Model SUBAGENTÓW (retriever, graph-retriever, answerer, verifier) — przypinany
-# do każdego subagenta, żeby NIE dziedziczyli (droższego) modelu orkiestratora.
-# Ekstrakcja i odpowiedź grafowa (graph_tools) celowo zostają na tańszym gpt-4o-mini.
+# Model subagentów (retriever, graph-retriever, answerer, verifier) — przypinany
+# do każdego z nich, żeby nie odziedziczyli droższego modelu orkiestratora.
+# Ekstrakcja i odpowiedzi grafowe (graph_tools) zostają na tańszym gpt-4o-mini.
 DEFAULT_MODEL = "openai:gpt-4.1-mini"
 
-# Model samego ORKIESTRATORA (planowanie i sterowanie przepływem). Mocniejszy model
-# rzetelniej trzyma się obowiązkowych kroków z promptu, więc dajemy go tylko tutaj.
+# Model samego orkiestratora (planowanie i przepływ). Mocniejszy model lepiej
+# trzyma się obowiązkowych kroków z promptu, więc dajemy go tylko tutaj.
 ORCHESTRATOR_MODEL = "openai:gpt-5-mini"
 
 # Folder z plikami pamięci (na dysku). Domyślnie ./agent-memory w katalogu repo.
@@ -87,7 +87,7 @@ def build_orchestrator(
     orch_chat = init_chat_model(orch_id, max_retries=8)
     sub_chat = init_chat_model(sub_id, max_retries=8)
 
-    # Przypnij model subagentom, żeby NIE dziedziczyli modelu orkiestratora.
+    # przypięcie modelu subagentom, żeby nie dziedziczyli modelu orkiestratora
     subagents_pinned = [{**sa, "model": sub_chat} for sa in subagents]
 
     # Backend złożony: pamięć na dysk (/memories/), reszta w stanie rozmowy.

@@ -16,7 +16,7 @@ from pathlib import Path
 
 from langchain.tools import tool
 
-# Folder projektu: orchestrator/tools/document_tools.py -> parents[2] == korzeń repo
+# nordvik-dataset leży w katalogu repo (dwa poziomy wyżej niż ten plik)
 DEFAULT_DOCS_DIR = Path(__file__).resolve().parents[2] / "nordvik-dataset"
 
 
@@ -30,8 +30,7 @@ def _index() -> list[dict]:
     docs: list[dict] = []
     docs_dir = _docs_dir()
     for path in sorted(docs_dir.glob("*.md")):
-        # Pomijamy pliki pomocnicze (np. mapa zbioru "00-MAPA-ZBIORU") — nazwy
-        # zaczynające się od cyfry; identyfikatory dokumentów zaczynają się literą.
+        # pliki pomocnicze (np. 00-MAPA-ZBIORU) zaczynają się od cyfry — pomijamy
         if path.stem[:1].isdigit():
             continue
         text = path.read_text(encoding="utf-8")
@@ -56,9 +55,9 @@ def _lookup(doc_id: str) -> dict | None:
 
 @tool
 def list_documents() -> str:
-    """List all available documents in the corpus (their IDs and types).
+    """Wypisz wszystkie dokumenty w korpusie (ich ID i typy).
 
-    Use this to see which documents exist before searching or reading.
+    Użyj, aby sprawdzić, jakie dokumenty istnieją, przed wyszukiwaniem lub odczytem.
     """
     docs = _index()
     if not docs:
@@ -70,14 +69,14 @@ def list_documents() -> str:
 
 @tool
 def search_documents(query: str, limit: int = 5) -> str:
-    """Search the document corpus for documents matching the query.
+    """Przeszukaj korpus dokumentów pod kątem zapytania.
 
-    Returns the most relevant documents (ID, type) with a short snippet around
-    the match. Use it to find documents relevant to a question.
+    Zwraca najtrafniejsze dokumenty (ID, typ) z krótkim fragmentem wokół
+    dopasowania. Użyj, aby znaleźć dokumenty istotne dla pytania.
 
     Args:
-        query: Search terms (e.g. "kredyt hipoteczny rata Kowalska" or "UM-7788").
-        limit: Maximum number of documents to return.
+        query: Słowa kluczowe (np. "kredyt hipoteczny rata Kowalska" lub "UM-7788").
+        limit: Maksymalna liczba zwracanych dokumentów.
     """
     terms = [t for t in re.split(r"\s+", query.lower().strip()) if t]
     if not terms:
@@ -104,11 +103,11 @@ def search_documents(query: str, limit: int = 5) -> str:
 
 @tool
 def read_document(doc_id: str) -> str:
-    """Read the full content of a document with the given identifier.
+    """Odczytaj pełną treść dokumentu o podanym identyfikatorze.
 
     Args:
-        doc_id: Document identifier, e.g. "UM-7788", "DC-2201", "TO-2025-Q1".
-            Case-insensitive.
+        doc_id: Identyfikator dokumentu, np. "UM-7788", "DC-2201", "TO-2025-Q1".
+            Wielkość liter nie ma znaczenia.
     """
     doc = _lookup(doc_id)
     if doc is None:

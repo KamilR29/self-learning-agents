@@ -4,8 +4,8 @@ Format zgodny z dokumentacją deepagents (słowniki SubAgent). Prompty ładowane
 z plików ``prompts/<nazwa>.md``.
 """
 
-from orchestrator.prompts_loader import load_prompt
-from orchestrator.tools import list_documents, read_document, search_documents
+from simple_agents.prompts_loader import load_prompt
+from simple_agents.tools import list_documents, read_document, search_documents
 
 retriever_subagent = {
     "name": "retriever",

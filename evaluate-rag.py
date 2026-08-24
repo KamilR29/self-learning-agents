@@ -12,9 +12,9 @@ Wyniki trafiają do folderu ``eval-wyniki/``:
   - ``statystyki.md``   — ile pytań z każdego pliku ocenionych na „dobra”.
 
 Użycie:
-    python evaluate.py                 # wszystkie zestawy
-    python evaluate.py --limit 3       # po 3 pytania z każdego zestawu (szybki test)
-    python evaluate.py --sets 1 2      # tylko zestaw 1 i 2
+    python evaluate-rag.py                 # wszystkie zestawy
+    python evaluate-rag.py --limit 3       # po 3 pytania z każdego zestawu (szybki test)
+    python evaluate-rag.py --sets 1 2      # tylko zestaw 1 i 2
 
 Wymaga OPENAI_API_KEY (agent + sędzia).
 """
@@ -31,8 +31,8 @@ from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
 from langchain_core.messages import BaseMessage
 
-from orchestrator import build_orchestrator
-from orchestrator.agent import DEFAULT_MODEL, ORCHESTRATOR_MODEL
+from simple_agents import build_orchestrator
+from simple_agents.agent import DEFAULT_MODEL, ORCHESTRATOR_MODEL
 
 PYTANIA_DIR = Path(__file__).parent / "nordvik-pytania"
 WYNIKI_DIR = Path(__file__).parent / "eval-wyniki"
@@ -47,9 +47,6 @@ _ID_RE = re.compile(
 )
 
 
-# --------------------------------------------------------------------------- #
-# Parsowanie plików z pytaniami                                                 #
-# --------------------------------------------------------------------------- #
 def parse_questions(path: Path) -> list[dict]:
     text = path.read_text(encoding="utf-8")
     questions: list[dict] = []
@@ -75,9 +72,6 @@ def parse_questions(path: Path) -> list[dict]:
     return questions
 
 
-# --------------------------------------------------------------------------- #
-# Uruchomienie agenta i pobranie odpowiedzi                                     #
-# --------------------------------------------------------------------------- #
 def _extract_text(content) -> str:
     if isinstance(content, str):
         return content.strip()
@@ -103,9 +97,6 @@ def extract_final_answer(result: dict) -> str:
     return ""
 
 
-# --------------------------------------------------------------------------- #
-# Sędzia (LLM) — ocena poprawności                                              #
-# --------------------------------------------------------------------------- #
 JUDGE_PROMPT = """Jesteś rygorystycznym sędzią oceniającym odpowiedzi systemu Q&A.
 Porównaj ODPOWIEDŹ AGENTA z ODPOWIEDZIĄ OCZEKIWANĄ na dane PYTANIE.
 Oceń wyłącznie zgodność merytoryczną (kluczowe fakty i liczby), ignorując styl.
@@ -137,13 +128,10 @@ def judge(judge_model, question: str, expected: str, answer: str) -> dict:
         if ocena not in {"dobra", "czesciowa", "zla"}:
             ocena = "zla"
         return {"ocena": ocena, "uzasadnienie": data.get("uzasadnienie", "")}
-    except Exception as exc:  # pragma: no cover
+    except Exception as exc:
         return {"ocena": "blad_oceny", "uzasadnienie": f"Błąd sędziego: {exc!r}"}
 
 
-# --------------------------------------------------------------------------- #
-# Główna pętla                                                                  #
-# --------------------------------------------------------------------------- #
 def main() -> None:
     load_dotenv()
     ap = argparse.ArgumentParser()
@@ -152,8 +140,8 @@ def main() -> None:
     ap.add_argument("--model", default=None, help="model orkiestratora i sędziego (domyślnie z env/DEFAULT)")
     args = ap.parse_args()
 
-    # model_id = model SUBAGENTÓW i SĘDZIEGO. Orkiestrator ma osobny, mocniejszy
-    # model (ORCHESTRATOR_MODEL w agent.py) — tak jak w systemie samouczącym się.
+    # model_id = model subagentów i sędziego; orkiestrator ma osobny, mocniejszy
+    # model (ORCHESTRATOR_MODEL w agent.py), tak jak w systemie samouczącym się
     model_id = args.model or os.environ.get("SUBAGENT_MODEL", DEFAULT_MODEL)
     agent = build_orchestrator(subagent_model=model_id)
     judge_model = init_chat_model(model_id)
@@ -180,7 +168,7 @@ def main() -> None:
                     config={"recursion_limit": 100},
                 )
                 answer = extract_final_answer(res)
-            except Exception as exc:  # pragma: no cover
+            except Exception as exc:
                 answer = f"(BŁĄD URUCHOMIENIA: {exc!r})"
 
             verdict = judge(judge_model, q["question"], q["expected"], answer)
@@ -229,7 +217,7 @@ def _write_outputs(results: list[dict], stats: dict) -> None:
 
     # 2) Odpowiedzi (markdown)
     lines = ["# Wyniki ewaluacji — odpowiedzi agenta\n"]
-    icon = {"dobra": "✅", "czesciowa": "🟡", "zla": "❌", "blad_oceny": "⚠️"}
+    icon = {"dobra": "[OK]", "czesciowa": "[~]", "zla": "[X]", "blad_oceny": "[!]"}
     for r in results:
         lines.append(f"## [{r['id']}] (zestaw {r['zestaw']}) {icon.get(r['ocena'], '')} {r['ocena']}")
         lines.append(f"**Pytanie:** {r['pytanie']}\n")

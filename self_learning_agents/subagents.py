@@ -5,8 +5,9 @@ z plików ``prompts/<nazwa>.md``.
 
 Subagenci:
   - retriever       — wyszukiwanie i odczyt dokumentów z plików,
-  - graph-retriever  — pamięć grafowa (GraphRAG na Neo4j) do pytań o relacje,
-  - answerer        — synteza końcowej odpowiedzi ze źródłami.
+  - graph-retriever — pamięć grafowa (GraphRAG na Neo4j) do pytań o relacje,
+  - answerer        — synteza końcowej odpowiedzi ze źródłami,
+  - verifier        — weryfikacja odpowiedzi względem dokumentów.
 """
 
 from self_learning_agents.prompts_loader import load_prompt

@@ -1,21 +1,9 @@
-"""Narzędzia pamięci grafowej (GraphRAG na Neo4j) dla subagenta grafowego.
+"""Narzędzia grafu wiedzy (GraphRAG na Neo4j) dla subagenta grafowego.
 
-Subagent BUDUJE, PRZESZUKUJE i AKTUALIZUJE graf wiedzy z dokumentów Nordvik
-(biblioteka ``neo4j-graphrag``), a także zarządza EDYTOWALNĄ ONTOLOGIĄ (schematem)
-grafu — jawny schemat unika automatycznej walidacji, która przerywała budowę,
-a jednocześnie agent może go rozszerzać (`additional_*` pozwala LLM dodawać typy).
-
-Narzędzia:
-  - graph_build(limit)                     — budowa/odświeżenie grafu (schema z pliku),
-  - graph_search(query)                    — przeszukiwanie (retrieval + relacje),
-  - graph_update(cypher)                   — aktualizacja grafu (Cypher),
-  - graph_status()                         — stan grafu,
-  - schema_show()                          — pokaż ontologię (typy węzłów i relacji),
-  - schema_add_node_type(label, desc)      — dodaj typ węzła do ontologii,
-  - schema_add_relationship_type(rtype)    — dodaj typ relacji do ontologii.
-
-Bezpieczna degradacja: bez konfiguracji Neo4j narzędzia zgłaszają niedostępność.
-Wymaga pakietów ``neo4j`` i ``neo4j-graphrag`` oraz OPENAI_API_KEY.
+Budowa, przeszukiwanie i aktualizacja grafu z dokumentów Nordvik przez
+neo4j-graphrag. Ontologia grafu jest jawna i edytowalna (plik JSON) — jawny
+schemat omija automatyczną walidację, która przerywała budowę, a agent może go
+rozszerzać. Bez konfiguracji Neo4j narzędzia zwracają komunikat o niedostępności.
 """
 
 from __future__ import annotations
@@ -29,9 +17,6 @@ from pathlib import Path
 
 from langchain.tools import tool
 
-# --------------------------------------------------------------------------- #
-# Konfiguracja                                                                  #
-# --------------------------------------------------------------------------- #
 INDEX_NAME = "nordvik_chunks"
 CHUNK_LABEL = "Chunk"
 EMBEDDING_PROPERTY = "embedding"
@@ -43,8 +28,8 @@ SCHEMA_PATH = Path(
     os.environ.get("SLA_GRAPH_SCHEMA", str(Path(__file__).resolve().parents[2] / "agent-memory" / "graph_schema.json"))
 ).resolve()
 
-# Ontologia bazowa (seed) — dopasowana do dokumentów Nordvik. Agent może ją
-# rozszerzać (schema_add_*), a LLM dodawać typy w locie (additional_*=True).
+# Ontologia startowa dopasowana do dokumentów Nordvik. Agent może ją rozszerzać
+# (schema_add_*), a LLM dodać typy w locie (additional_*=True).
 _SEED_SCHEMA: dict = {
     "node_types": [
         {"label": "Client", "description": "Klient banku (osoba lub firma)"},
@@ -96,9 +81,6 @@ def _not_configured_msg(tool_name: str) -> str:
     )
 
 
-# --------------------------------------------------------------------------- #
-# Edytowalna ontologia (schemat) — plik JSON                                    #
-# --------------------------------------------------------------------------- #
 def _load_schema() -> dict:
     if not SCHEMA_PATH.exists():
         SCHEMA_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -126,9 +108,6 @@ def _run_async(coro):
         return ex.submit(lambda: asyncio.run(coro)).result()
 
 
-# --------------------------------------------------------------------------- #
-# Leniwe zasoby                                                                 #
-# --------------------------------------------------------------------------- #
 @lru_cache(maxsize=1)
 def get_driver():
     import neo4j
@@ -145,12 +124,10 @@ def _embedder():
 
 
 def count_learned_nodes() -> int:
-    """Liczba węzłów WIEDZY dopisanych przez agenta (:LearnedFact + :Learning).
+    """Liczba węzłów wiedzy dopisanych przez agenta (:LearnedFact + :Learning).
 
-    Służy do POMIARU aktualizacji pamięci grafowej z samej bazy (niezależnie od
-    strumienia agenta — subagenci są uruchamiani przez ``.invoke``, więc ich
-    zapisy do grafu nie wypływają na strumień orkiestratora). Zwraca ``-1``, gdy
-    Neo4j nie jest skonfigurowany lub odczyt się nie powiódł.
+    Mierzy aktualizacje pamięci grafowej wprost z bazy — zapisy subagentów nie
+    wypływają na strumień orkiestratora. Zwraca -1, gdy Neo4j jest niedostępny.
     """
     if not is_configured():
         return -1
@@ -207,8 +184,7 @@ async def _build_graph(limit: int | None) -> str:
     from neo4j_graphrag.indexes import create_vector_index
     from self_learning_agents.tools.document_tools import _index
 
-    # JAWNY schemat (z pliku) — pomija automatyczną walidację schematu, która
-    # przerywała build; additional_*=True pozwala LLM dodawać własne typy.
+    # jawny schemat z pliku omija automatyczną walidację, która przerywała budowę
     pipeline = SimpleKGPipeline(
         llm=_extraction_llm(),
         driver=get_driver(),
@@ -229,11 +205,11 @@ async def _build_graph(limit: int | None) -> str:
         try:
             await pipeline.run_async(text=f"[DOKUMENT {doc['id']}]\n{doc['text']}")
             ok += 1
-        except Exception as exc:  # pojedynczy dokument nie przerywa całości
+        except Exception as exc:  # jeden dokument nie przerywa całości
             failed.append(doc["id"])
             print(f"      [graf] pominięto {doc['id']}: {exc!r}", flush=True)
 
-    # Indeks wektorowy tworzymy ZAWSZE na końcu (nawet po pominięciach).
+    # indeks wektorowy tworzymy na końcu, nawet gdy część dokumentów pominięto
     try:
         create_vector_index(
             get_driver(), name=INDEX_NAME, label=CHUNK_LABEL,
@@ -248,46 +224,44 @@ async def _build_graph(limit: int | None) -> str:
     return msg
 
 
-# --------------------------------------------------------------------------- #
-# Narzędzia: budowa / przeszukiwanie / aktualizacja / stan                      #
-# --------------------------------------------------------------------------- #
 @tool
 def graph_build(limit: int = 0) -> str:
-    """Build/refresh the Neo4j knowledge graph from the Nordvik documents.
+    """Zbuduj/odśwież graf wiedzy Neo4j z dokumentów Nordvik.
 
-    Uses the editable ontology (schema_show / schema_add_*) as an explicit schema;
-    the LLM may also add new types on the fly. Stores chunks + embeddings and
-    creates the vector index. A document that fails extraction is skipped, not fatal.
+    Korzysta z edytowalnej ontologii (schema_show / schema_add_*) jako jawnego
+    schematu; LLM może też dodawać nowe typy w locie. Zapisuje fragmenty +
+    embeddingi i tworzy indeks wektorowy. Dokument, którego ekstrakcja się nie
+    powiedzie, jest pomijany — to nie przerywa całości.
 
     Args:
-        limit: How many documents to ingest (0 = all). Use a small number to test.
+        limit: Ile dokumentów wczytać (0 = wszystkie). Mała wartość na potrzeby testu.
     """
     if not is_configured():
         return _not_configured_msg("graph_build")
     try:
         return _run_async(_build_graph(limit or None))
-    except Exception as exc:  # pragma: no cover - zależne od Neo4j
+    except Exception as exc:
         hint = " UWAGA: brak wtyczki APOC w Neo4j." if "apoc" in repr(exc).lower() else ""
         return f"graph_build błąd: {exc!r}.{hint}"
 
 
 @tool
 def graph_search(query: str, top_k: int = 8) -> str:
-    """Search the Neo4j knowledge graph (GraphRAG) built from the Nordvik documents.
+    """Przeszukaj graf wiedzy Neo4j (GraphRAG) zbudowany z dokumentów Nordvik.
 
-    Vector retrieval over chunks plus traversal over extracted entities/relationships.
-    Best for relational / multi-hop questions.
+    Wyszukiwanie wektorowe po fragmentach plus przejście po wydobytych encjach
+    i relacjach. Najlepsze do pytań o powiązania / wielostopniowych.
 
     Args:
-        query: The question in natural language.
-        top_k: How many chunks to retrieve as context (default 5).
+        query: Pytanie w języku naturalnym.
+        top_k: Ile fragmentów pobrać jako kontekst.
     """
     if not is_configured():
         return _not_configured_msg("graph_search")
     try:
         result = _graph_rag().search(query, retriever_config={"top_k": top_k})
         return result.answer or "(graf nie zwrócił odpowiedzi)"
-    except Exception as exc:  # pragma: no cover - zależne od Neo4j
+    except Exception as exc:
         return (
             f"graph_search błąd: {exc!r}. Czy graf został zbudowany (graph_build)? "
             "Sprawdź też połączenie z Neo4j."
@@ -296,12 +270,12 @@ def graph_search(query: str, top_k: int = 8) -> str:
 
 @tool
 def graph_update(cypher: str) -> str:
-    """Update the knowledge graph by running a write Cypher query (MERGE/SET/DELETE).
+    """Zaktualizuj graf wiedzy zapytaniem zapisującym w Cypher (MERGE/SET/DELETE).
 
-    Prefer MERGE over CREATE to avoid duplicates.
+    Używaj MERGE zamiast CREATE, aby unikać duplikatów.
 
     Args:
-        cypher: A write Cypher statement.
+        cypher: Zapytanie zapisujące w języku Cypher.
     """
     if not is_configured():
         return _not_configured_msg("graph_update")
@@ -314,13 +288,13 @@ def graph_update(cypher: str) -> str:
             f"relacje +{c.relationships_created}/-{c.relationships_deleted}, "
             f"właściwości ustawione: {c.properties_set}."
         )
-    except Exception as exc:  # pragma: no cover - zależne od Neo4j
+    except Exception as exc:
         return f"graph_update błąd: {exc!r}. Sprawdź składnię Cypher i połączenie z Neo4j."
 
 
 @tool
 def graph_status() -> str:
-    """Report the state of the knowledge graph (node/relationship counts, index)."""
+    """Zwróć stan grafu wiedzy (liczba węzłów/relacji, indeks wektorowy)."""
     if not is_configured():
         return _not_configured_msg("graph_status")
     try:
@@ -334,24 +308,21 @@ def graph_status() -> str:
             f"Graf: {nodes[0]['c']} węzłów, {rels[0]['c']} relacji; "
             f"indeks '{INDEX_NAME}' {'istnieje' if idx[0]['c'] else 'NIE istnieje'}."
         )
-    except Exception as exc:  # pragma: no cover - zależne od Neo4j
+    except Exception as exc:
         return f"graph_status błąd: {exc!r}. Sprawdź połączenie z Neo4j."
 
 
-# --------------------------------------------------------------------------- #
-# Narzędzia: EDYTOWALNA ONTOLOGIA (schemat)                                     #
-# --------------------------------------------------------------------------- #
 @tool
 def graph_add_learned_fact(question: str, answer: str, sources: str = "") -> str:
-    """Persist a learned Q&A fact into the graph so future graph_search finds it.
+    """Zapisz w grafie nauczony fakt (pytanie–odpowiedź), by graph_search go znalazł.
 
-    Stores it as a :Chunk:LearnedFact node with an embedding, so it enters the
-    vector index and is retrieved next time — the graph literally learns.
+    Zapisywany jako węzeł :Chunk:LearnedFact z embeddingiem, więc trafia do
+    indeksu wektorowego i jest odnajdywany następnym razem — graf faktycznie się uczy.
 
     Args:
-        question: The question that was answered.
-        answer: The verified answer.
-        sources: Comma-separated source document IDs (optional).
+        question: Pytanie, na które udzielono odpowiedzi.
+        answer: Zweryfikowana odpowiedź.
+        sources: ID dokumentów źródłowych po przecinku (opcjonalnie).
     """
     if not is_configured():
         return _not_configured_msg("graph_add_learned_fact")
@@ -365,23 +336,23 @@ def graph_add_learned_fact(question: str, answer: str, sources: str = "") -> str
             id=fid, text=text, emb=emb, src=sources,
         )
         return f"Zapisano nauczony fakt do grafu (id {fid})."
-    except Exception as exc:  # pragma: no cover - zależne od Neo4j
+    except Exception as exc:
         return f"graph_add_learned_fact błąd: {exc!r}."
 
 
 @tool
 def graph_add_learning(question: str, critique: str, entity_ids: str = "") -> str:
-    """Attach a qualitative learning/critique to the graph, linked to relevant nodes.
+    """Dopisz do grafu jakościową wskazówkę/krytykę, powiązaną z właściwymi węzłami.
 
-    Stores a :Chunk:Learning node (with embedding, so it is retrievable) and links it
-    to the entity nodes named in the question (e.g. WN-4501) via :HINT_FOR / :FROM_CHUNK.
-    Use for feedback like „attachment right, but net income wrong; missing DC-2201” —
-    WITHOUT the concrete correct values.
+    Zapisuje węzeł :Chunk:Learning (z embeddingiem, więc wyszukiwalny) i łączy go
+    z węzłami encji wskazanymi w pytaniu (np. WN-4501) relacjami :HINT_FOR / :FROM_CHUNK.
+    Stosuj do feedbacku typu „załącznik dobrze, ale dochód netto źle; brakuje DC-2201” —
+    BEZ podawania konkretnych poprawnych wartości.
 
     Args:
-        question: The question this learning is about (used for retrieval embedding).
-        critique: Qualitative feedback (what was wrong / to try), no concrete answer values.
-        entity_ids: Comma-separated document/entity IDs to link (e.g. "WN-4501, DC-2201").
+        question: Pytanie, którego dotyczy wskazówka (do embeddingu wyszukiwania).
+        critique: Jakościowa uwaga (co było źle / co spróbować), bez konkretnych wartości.
+        entity_ids: ID dokumentów/encji do powiązania po przecinku (np. "WN-4501, DC-2201").
     """
     if not is_configured():
         return _not_configured_msg("graph_add_learning")
@@ -406,16 +377,16 @@ def graph_add_learning(question: str, critique: str, entity_ids: str = "") -> st
             )
             linked = recs[0]["c"] if recs else 0
         return f"Zapisano wskazówkę do grafu (id {lid}); powiązano z {linked} węzłami."
-    except Exception as exc:  # pragma: no cover - zależne od Neo4j
+    except Exception as exc:
         return f"graph_add_learning błąd: {exc!r}."
 
 
 @tool
 def schema_show() -> str:
-    """Show the current graph ontology (node types and relationship types).
+    """Pokaż bieżącą ontologię grafu (typy węzłów i relacji).
 
-    The ontology guides graph_build; you can extend it with schema_add_node_type
-    and schema_add_relationship_type.
+    Ontologia steruje graph_build; możesz ją rozszerzyć narzędziami
+    schema_add_node_type i schema_add_relationship_type.
     """
     s = _load_schema()
     nodes = ", ".join(
@@ -432,11 +403,11 @@ def schema_show() -> str:
 
 @tool
 def schema_add_node_type(label: str, description: str = "") -> str:
-    """Add a node type (label) to the editable graph ontology.
+    """Dodaj typ węzła (etykietę) do edytowalnej ontologii grafu.
 
     Args:
-        label: New node label, e.g. "Guarantor".
-        description: Short description of what this entity type represents.
+        label: Nowa etykieta węzła, np. "Guarantor".
+        description: Krótki opis, co reprezentuje ten typ encji.
     """
     s = _load_schema()
     labels = {(n["label"] if isinstance(n, dict) else n) for n in s.get("node_types", [])}
@@ -449,10 +420,10 @@ def schema_add_node_type(label: str, description: str = "") -> str:
 
 @tool
 def schema_add_relationship_type(rel_type: str) -> str:
-    """Add a relationship type to the editable graph ontology.
+    """Dodaj typ relacji do edytowalnej ontologii grafu.
 
     Args:
-        rel_type: New relationship type, e.g. "GUARANTEES" (UPPER_SNAKE_CASE).
+        rel_type: Nowy typ relacji, np. "GUARANTEES" (UPPER_SNAKE_CASE).
     """
     s = _load_schema()
     rt = rel_type.strip().upper().replace(" ", "_")

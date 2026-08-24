@@ -4,7 +4,7 @@ Użycie:
     python main.py "Twoje pytanie..."        # jednorazowe
     python main.py                            # tryb interaktywny (pętla)
 
-Wybór pakietu agenta zmienną AGENT_PACKAGE (domyślnie "orchestrator"):
+Wybór pakietu agenta zmienną AGENT_PACKAGE (domyślnie "simple_agents"):
     AGENT_PACKAGE=self_learning_agents python main.py "..."   # wersja z pamięcią
 
 Wymaga ustawionego OPENAI_API_KEY. Zmienne można umieścić w pliku .env.
@@ -19,7 +19,7 @@ import sys
 from dotenv import load_dotenv
 from langchain_core.messages import BaseMessage
 
-_PACKAGE = os.environ.get("AGENT_PACKAGE", "orchestrator")
+_PACKAGE = os.environ.get("AGENT_PACKAGE", "simple_agents")
 build_orchestrator = importlib.import_module(_PACKAGE).build_orchestrator
 
 
@@ -32,7 +32,7 @@ def _print_new_messages(chunk: dict) -> None:
             if not isinstance(msg, BaseMessage):
                 continue
             name = getattr(msg, "name", None) or msg.type
-            # Wywołania narzędzi (delegacje do subagentów, planowanie itd.)
+            # wywołania narzędzi (m.in. delegacje do subagentów)
             for call in getattr(msg, "tool_calls", None) or []:
                 target = (call.get("args") or {}).get("subagent_type")
                 suffix = f" → {target}" if target else ""
@@ -43,11 +43,7 @@ def _print_new_messages(chunk: dict) -> None:
 
 
 def _extract_text(content) -> str:
-    """Wyciągnij czytelny tekst z treści wiadomości.
-
-    Treść modeli 'reasoning' (np. OpenAI) to lista bloków — interesują nas tylko
-    bloki tekstowe; reasoning i wywołania narzędzi pomijamy.
-    """
+    """Wyciągnij czytelny tekst z treści wiadomości (pomijając bloki reasoningu)."""
     if isinstance(content, str):
         return content.strip()
     if isinstance(content, list):
