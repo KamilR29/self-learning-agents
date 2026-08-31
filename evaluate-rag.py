@@ -140,8 +140,7 @@ def main() -> None:
     ap.add_argument("--model", default=None, help="model orkiestratora i sędziego (domyślnie z env/DEFAULT)")
     args = ap.parse_args()
 
-    # model_id = model subagentów i sędziego; orkiestrator ma osobny, mocniejszy
-    # model (ORCHESTRATOR_MODEL w agent.py), tak jak w systemie samouczącym się
+
     model_id = args.model or os.environ.get("SUBAGENT_MODEL", DEFAULT_MODEL)
     agent = build_orchestrator(subagent_model=model_id)
     judge_model = init_chat_model(model_id)
@@ -217,7 +216,7 @@ def _write_outputs(results: list[dict], stats: dict) -> None:
 
     # 2) Odpowiedzi (markdown)
     lines = ["# Wyniki ewaluacji — odpowiedzi agenta\n"]
-    icon = {"dobra": "[OK]", "czesciowa": "[~]", "zla": "[X]", "blad_oceny": "[!]"}
+    icon = {"dobra": "✅", "czesciowa": "🟡", "zla": "❌", "blad_oceny": "⚠️"}
     for r in results:
         lines.append(f"## [{r['id']}] (zestaw {r['zestaw']}) {icon.get(r['ocena'], '')} {r['ocena']}")
         lines.append(f"**Pytanie:** {r['pytanie']}\n")

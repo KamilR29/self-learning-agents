@@ -29,8 +29,6 @@ import os
 import re
 from pathlib import Path
 
-# Wyciszenie hałaśliwych powiadomień sterownika Neo4j (np. o etykiecie __Entity__),
-# żeby realne komunikaty i błędy były czytelne.
 logging.getLogger("neo4j.notifications").setLevel(logging.ERROR)
 
 from dotenv import load_dotenv
@@ -125,11 +123,11 @@ def run_with_events(agent, prompt: str, live: bool = True) -> tuple[str, list[st
                         elif sub == "answerer":
                             emit("formułuję odpowiedź")
                     elif name in ("graph_add_learned_fact", "graph_add_learning", "graph_update"):
-                        emit("AKTUALIZUJĘ GRAF (zapis wiedzy/wskazówki)")
+                        emit("📝 AKTUALIZUJĘ GRAF (zapis wiedzy/wskazówki)")
                     elif name in ("edit_file", "write_file"):
                         fp = str(args.get("file_path", "")).lower()
                         if "memor" in fp:
-                            emit("AKTUALIZUJĘ PAMIĘĆ (zapis nowej wiedzy)")
+                            emit("📝 AKTUALIZUJĘ PAMIĘĆ (zapis nowej wiedzy)")
                 txt = _text(msg.content)
                 if txt and not getattr(msg, "tool_calls", None):
                     last_text = txt
@@ -174,8 +172,7 @@ def main() -> None:
     ap.add_argument("--docs-limit", type=int, default=0, help="ile dokumentów do grafu (0=wszystkie)")
     args = ap.parse_args()
 
-    # model_id = model subagentów i sędziego; orkiestrator ma osobny, mocniejszy
-    # model (ORCHESTRATOR_MODEL w agent.py)
+
     model_id = args.model or os.environ.get("SUBAGENT_MODEL", DEFAULT_MODEL)
     agent = build_orchestrator(subagent_model=model_id)   # orkiestrator deepagents prowadzi przepływ
     judge_model = init_chat_model(model_id, max_retries=8)  # backoff na limity 429
@@ -212,7 +209,6 @@ def main() -> None:
 
         for q in questions:
             print(f"  [{q['id']}] {q['question'][:70]}...")
-            # pomiar aktualizacji pamięci wprost z bazy: liczba węzłów wiedzy przed pytaniem
             mem_before = count_learned_nodes()
             try:
                 answer, events = run_with_events(agent, q["question"])
@@ -227,9 +223,6 @@ def main() -> None:
             fallback = any("DOKUMENTY" in e for e in events)
             fb_events: list[str] = []
 
-            # feedback sterowany promptem: przy ocenie zła/częściowa przekazujemy
-            # orkiestratorowi uwagę; wg zasady 5 z promptu ma doszukać brakujących
-            # danych w dokumentach i uzupełnić graf, a nie tylko dopisać wskazówkę
             if verdict["ocena"] in ("zla", "czesciowa"):
                 fb_prompt = (
                     f"INFORMACJA ZWROTNA do wcześniejszego pytania: „{q['question']}”. "
@@ -244,12 +237,11 @@ def main() -> None:
                 )
                 try:
                     _, fb_events = run_with_events(agent, fb_prompt, live=False)
-                    print("      · feedback → uzupełnienie grafu + wskazówka (sterowane promptem)")
+                    print("      · 📌 feedback → uzupełnienie grafu + wskazówka (sterowane promptem)")
                 except Exception as exc:
                     print(f"      · feedback nieudany: {exc!r}")
 
-            # aktualizacja pamięci = realny przyrost węzłów wiedzy w grafie (zapis
-            # po kroku 6 i po feedbacku); bez Neo4j polegamy na sygnale ze strumienia
+
             mem_after = count_learned_nodes()
             if mem_before >= 0 and mem_after >= 0:
                 mem_upd = mem_after > mem_before
@@ -285,7 +277,7 @@ def _write_outputs(results: list[dict], stats: dict) -> None:
         json.dumps({"wyniki": results, "statystyki": stats}, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
-    icon = {"dobra": "[OK]", "czesciowa": "[~]", "zla": "[X]", "blad_oceny": "[!]"}
+    icon = {"dobra": "✅", "czesciowa": "🟡", "zla": "❌", "blad_oceny": "⚠️"}
     lines = ["# Wyniki ewaluacji (self_learning_agents)\n"]
     for r in results:
         lines += [

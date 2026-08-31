@@ -23,13 +23,12 @@ EMBEDDING_PROPERTY = "embedding"
 EMBEDDING_MODEL = "text-embedding-3-small"
 EMBEDDING_DIMS = 1536
 
-# Ścieżka edytowalnej ontologii (część pamięci agenta).
+
 SCHEMA_PATH = Path(
     os.environ.get("SLA_GRAPH_SCHEMA", str(Path(__file__).resolve().parents[2] / "agent-memory" / "graph_schema.json"))
 ).resolve()
 
-# Ontologia startowa dopasowana do dokumentów Nordvik. Agent może ją rozszerzać
-# (schema_add_*), a LLM dodać typy w locie (additional_*=True).
+
 _SEED_SCHEMA: dict = {
     "node_types": [
         {"label": "Client", "description": "Klient banku (osoba lub firma)"},
@@ -184,7 +183,7 @@ async def _build_graph(limit: int | None) -> str:
     from neo4j_graphrag.indexes import create_vector_index
     from self_learning_agents.tools.document_tools import _index
 
-    # jawny schemat z pliku omija automatyczną walidację, która przerywała budowę
+
     pipeline = SimpleKGPipeline(
         llm=_extraction_llm(),
         driver=get_driver(),
@@ -209,7 +208,7 @@ async def _build_graph(limit: int | None) -> str:
             failed.append(doc["id"])
             print(f"      [graf] pominięto {doc['id']}: {exc!r}", flush=True)
 
-    # indeks wektorowy tworzymy na końcu, nawet gdy część dokumentów pominięto
+
     try:
         create_vector_index(
             get_driver(), name=INDEX_NAME, label=CHUNK_LABEL,

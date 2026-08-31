@@ -16,7 +16,7 @@ from pathlib import Path
 
 from langchain.tools import tool
 
-# nordvik-dataset leży w katalogu repo (dwa poziomy wyżej niż ten plik)
+
 DEFAULT_DOCS_DIR = Path(__file__).resolve().parents[2] / "nordvik-dataset"
 
 
@@ -30,7 +30,6 @@ def _index() -> list[dict]:
     docs: list[dict] = []
     docs_dir = _docs_dir()
     for path in sorted(docs_dir.glob("*.md")):
-        # pliki pomocnicze (np. 00-MAPA-ZBIORU) zaczynają się od cyfry — pomijamy
         if path.stem[:1].isdigit():
             continue
         text = path.read_text(encoding="utf-8")

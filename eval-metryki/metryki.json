@@ -1,0 +1,202 @@
+{
+  "bazowy": {
+    "ogolem": {
+      "n": 42,
+      "src_precision": 0.6698240912526627,
+      "src_recall": 0.8666572184429326,
+      "src_f1": 0.7116597532563919,
+      "rouge_l": 0.16660766428262277,
+      "correctness_judge": 0.7976190476190477,
+      "answer_similarity": 0.7037474991487375
+    },
+    "zestawy": {
+      "1": {
+        "n": 18,
+        "src_precision": 0.5296296296296297,
+        "src_recall": 0.9444444444444444,
+        "src_f1": 0.6370370370370371,
+        "rouge_l": 0.20088296437010714,
+        "correctness_judge": 0.8333333333333334,
+        "answer_similarity": 0.6238713364634854
+      },
+      "2": {
+        "n": 14,
+        "src_precision": 0.8056122448979591,
+        "src_recall": 0.9047619047619048,
+        "src_f1": 0.8365800865800866,
+        "rouge_l": 0.1662060346513457,
+        "correctness_judge": 0.8571428571428571,
+        "answer_similarity": 0.7799924771757484
+      },
+      "3": {
+        "n": 10,
+        "src_precision": 0.7320707070707071,
+        "src_recall": 0.6732936507936508,
+        "src_f1": 0.6710921757980581,
+        "rouge_l": 0.10547440560893877,
+        "correctness_judge": 0.65,
+        "answer_similarity": 0.740781622744376
+      }
+    }
+  },
+  "samouczacy-1": {
+    "ogolem": {
+      "n": 42,
+      "src_precision": 0.6322191697191697,
+      "src_recall": 0.8279478458049887,
+      "src_f1": 0.6621353651085109,
+      "rouge_l": 0.15158811759069338,
+      "correctness_judge": 0.8452380952380952,
+      "answer_similarity": 0.699915055268927
+    },
+    "zestawy": {
+      "1": {
+        "n": 18,
+        "src_precision": 0.5810185185185186,
+        "src_recall": 0.9444444444444444,
+        "src_f1": 0.6679012345679012,
+        "rouge_l": 0.16306894584694534,
+        "correctness_judge": 0.9166666666666666,
+        "answer_similarity": 0.6244872060882456
+      },
+      "2": {
+        "n": 14,
+        "src_precision": 0.6948979591836734,
+        "src_recall": 0.880952380952381,
+        "src_f1": 0.7414965986394558,
+        "rouge_l": 0.1810551157466642,
+        "correctness_judge": 0.8928571428571429,
+        "answer_similarity": 0.7772728170994521
+      },
+      "3": {
+        "n": 10,
+        "src_precision": 0.6366300366300366,
+        "src_recall": 0.5440476190476191,
+        "src_f1": 0.5406510731382854,
+        "rouge_l": 0.08966882931108071,
+        "correctness_judge": 0.65,
+        "answer_similarity": 0.7273843172314189
+      }
+    }
+  },
+  "samouczacy-2": {
+    "ogolem": {
+      "n": 42,
+      "src_precision": 0.6984967413538842,
+      "src_recall": 0.8513794406651549,
+      "src_f1": 0.716452330738045,
+      "rouge_l": 0.13158769693089403,
+      "correctness_judge": 0.8571428571428571,
+      "answer_similarity": 0.6793436765423108
+    },
+    "zestawy": {
+      "1": {
+        "n": 18,
+        "src_precision": 0.7268518518518519,
+        "src_recall": 0.9722222222222222,
+        "src_f1": 0.7814814814814814,
+        "rouge_l": 0.14320651767940443,
+        "correctness_judge": 0.9166666666666666,
+        "answer_similarity": 0.6045129854490926
+      },
+      "2": {
+        "n": 14,
+        "src_precision": 0.687847866419295,
+        "src_recall": 0.869047619047619,
+        "src_f1": 0.7199134199134198,
+        "rouge_l": 0.1513837545501044,
+        "correctness_judge": 0.8571428571428571,
+        "answer_similarity": 0.7470149059090019
+      },
+      "3": {
+        "n": 10,
+        "src_precision": 0.6623659673659674,
+        "src_recall": 0.6091269841269841,
+        "src_f1": 0.5945543345543346,
+        "rouge_l": 0.08295933891668077,
+        "correctness_judge": 0.75,
+        "answer_similarity": 0.7192991993967361
+      }
+    }
+  },
+  "samouczacy-3": {
+    "ogolem": {
+      "n": 42,
+      "src_precision": 0.7103671878107969,
+      "src_recall": 0.8843065003779289,
+      "src_f1": 0.7498623575304247,
+      "rouge_l": 0.11000818070935289,
+      "correctness_judge": 0.8928571428571429,
+      "answer_similarity": 0.6811270011732645
+    },
+    "zestawy": {
+      "1": {
+        "n": 18,
+        "src_precision": 0.7546296296296297,
+        "src_recall": 0.9722222222222222,
+        "src_f1": 0.7973544973544974,
+        "rouge_l": 0.11879127702839416,
+        "correctness_judge": 0.9444444444444444,
+        "answer_similarity": 0.6005997187106442
+      },
+      "2": {
+        "n": 14,
+        "src_precision": 0.7437925170068027,
+        "src_recall": 0.9523809523809524,
+        "src_f1": 0.8086528550814265,
+        "rouge_l": 0.11457802736990697,
+        "correctness_judge": 0.9285714285714286,
+        "answer_similarity": 0.7464526092985188
+      },
+      "3": {
+        "n": 10,
+        "src_precision": 0.5838993316624895,
+        "src_recall": 0.6307539682539682,
+        "src_f1": 0.5820698092756916,
+        "rouge_l": 0.08780082201030288,
+        "correctness_judge": 0.75,
+        "answer_similarity": 0.7346202582306253
+      }
+    }
+  },
+  "samouczacy-4": {
+    "ogolem": {
+      "n": 42,
+      "src_precision": 0.6908493953136811,
+      "src_recall": 0.8885770975056689,
+      "src_f1": 0.7418465417765138,
+      "rouge_l": 0.1211700346973563,
+      "correctness_judge": 0.9166666666666666,
+      "answer_similarity": 0.6887319269784347
+    },
+    "zestawy": {
+      "1": {
+        "n": 18,
+        "src_precision": 0.6759259259259259,
+        "src_recall": 0.9722222222222222,
+        "src_f1": 0.7611111111111111,
+        "rouge_l": 0.12097360287668749,
+        "correctness_judge": 0.9722222222222222,
+        "answer_similarity": 0.6089368405857448
+      },
+      "2": {
+        "n": 14,
+        "src_precision": 0.7238095238095238,
+        "src_recall": 0.9642857142857143,
+        "src_f1": 0.8097505668934241,
+        "rouge_l": 0.14465526660956804,
+        "correctness_judge": 0.8571428571428571,
+        "answer_similarity": 0.7614032245817157
+      },
+      "3": {
+        "n": 10,
+        "src_precision": 0.6715674603174604,
+        "src_recall": 0.6320238095238095,
+        "src_f1": 0.6121046818105642,
+        "rouge_l": 0.08864428729746365,
+        "correctness_judge": 0.9,
+        "answer_similarity": 0.7306232658406829
+      }
+    }
+  }
+}
