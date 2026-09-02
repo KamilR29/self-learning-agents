@@ -208,13 +208,12 @@ def main() -> None:
 
 
 def _write_outputs(results: list[dict], stats: dict) -> None:
-    # 1) JSON
+
     (WYNIKI_DIR / "wyniki.json").write_text(
         json.dumps({"wyniki": results, "statystyki": stats}, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
 
-    # 2) Odpowiedzi (markdown)
     lines = ["# Wyniki ewaluacji — odpowiedzi agenta\n"]
     icon = {"dobra": "✅", "czesciowa": "🟡", "zla": "❌", "blad_oceny": "⚠️"}
     for r in results:
@@ -230,7 +229,6 @@ def _write_outputs(results: list[dict], stats: dict) -> None:
         lines.append("---\n")
     (WYNIKI_DIR / "odpowiedzi.md").write_text("\n".join(lines), encoding="utf-8")
 
-    # 3) Statystyki (markdown)
     s = ["# Statystyki ewaluacji\n", "| Zestaw | Plik | Pytań | Dobra | Częściowa | Zła | Dokładność (dobra) | Dokładność (z częściowymi) |",
          "|--------|------|------:|------:|----------:|----:|-------------------:|---------------------------:|"]
     tot = {"liczba_pytan": 0, "dobra": 0, "czesciowa": 0, "zla": 0}

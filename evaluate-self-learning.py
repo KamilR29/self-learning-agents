@@ -174,12 +174,11 @@ def main() -> None:
 
 
     model_id = args.model or os.environ.get("SUBAGENT_MODEL", DEFAULT_MODEL)
-    agent = build_orchestrator(subagent_model=model_id)   # orkiestrator deepagents prowadzi przepływ
-    judge_model = init_chat_model(model_id, max_retries=8)  # backoff na limity 429
+    agent = build_orchestrator(subagent_model=model_id)   
+    judge_model = init_chat_model(model_id, max_retries=8)  
     orch_id = os.environ.get("ORCHESTRATOR_MODEL", ORCHESTRATOR_MODEL)
     print(f"Model orkiestratora: {orch_id} | subagenci i sędzia: {model_id}")
 
-    # FAZA 1: budowa grafu wiedzy
     print("\n===== FAZA 1: BUDOWA WIEDZY =====")
     if args.skip_graph:
         print("[graf] pominięto (--skip-graph)")
@@ -194,7 +193,7 @@ def main() -> None:
             print(f"      [graf] nieudane: {exc!r} — kontynuuję bez grafu.")
     print("[przepływ] prowadzony przez orkiestratora deepagents (reguły w prompcie).")
 
-    # FAZA 2: odpowiadanie na pytania (przepływ prowadzi orkiestrator)
+
     print("\n===== FAZA 2: ODPOWIADANIE NA PYTANIA =====")
     WYNIKI_DIR.mkdir(exist_ok=True)
     results: list[dict] = []

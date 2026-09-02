@@ -1,25 +1,4 @@
-"""Metryki jakości liczone offline z zapisanych wyników ewaluacji.
 
-Nie uruchamia agentów — działa wyłącznie na plikach ``wyniki*.json``, więc nie
-generuje kosztownych przebiegów. Liczy:
-  - retrieval po ID źródeł: precyzja, czułość (recall), F1,
-  - ROUGE-L między odpowiedzią agenta a odpowiedzią wzorcową (LCS, bez zależności),
-  - correctness_judge: ocena sędziego z plików zmapowana na liczbę
-    (dobra=1, czesciowa=0.5, zla=0) — za darmo, bez API,
-  - answer_similarity (--similarity): semantyczne podobieństwo odpowiedzi do wzorca
-    jako cosinus embeddingów (to samo, co robi metryka RAGAS; wymaga tylko
-    ``langchain-openai`` i klucza OPENAI, bez kompilacji i bez pakietu ragas).
-
-Wejście (domyślnie):
-  - system bazowy:      eval-wyniki/wyniki.json
-  - system samouczący:  eval-wyniki-advanced/wyniki1.json .. wyniki4.json
-
-Wyjście: eval-metryki/metryki.json oraz eval-metryki/metryki.md.
-
-Użycie:
-    python metrics_offline.py                 # metryki offline, bez API
-    python metrics_offline.py --similarity    # dodatkowo answer_similarity (embeddingi)
-"""
 
 from __future__ import annotations
 
@@ -31,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 OUT_DIR = ROOT / "eval-metryki"
 
-# (etykieta przebiegu, ścieżka do pliku wyników)
+
 RUNS: list[tuple[str, Path]] = [
     ("bazowy", ROOT / "eval-wyniki" / "wyniki.json"),
     ("samouczacy-1", ROOT / "eval-wyniki-advanced" / "wyniki1.json"),
@@ -44,9 +23,7 @@ SETS = ["1", "2", "3"]
 OCENA_SCORE = {"dobra": 1.0, "czesciowa": 0.5, "zla": 0.0}
 
 
-# --------------------------------------------------------------------------- #
-# Metryki deterministyczne (bez API)                                           #
-# --------------------------------------------------------------------------- #
+
 def source_prf(found: list[str], expected: list[str]) -> tuple[float, float, float] | None:
     """Precyzja, czułość i F1 dla cytowanych ID źródeł. None, gdy brak wzorca."""
     f, e = set(found), set(expected)
@@ -81,9 +58,7 @@ def _mean(xs: list[float]) -> float:
     return sum(xs) / len(xs) if xs else 0.0
 
 
-# --------------------------------------------------------------------------- #
-# Podobieństwo semantyczne (embeddingi) — bez pakietu ragas                     #
-# --------------------------------------------------------------------------- #
+
 def compute_similarity(rows: list[dict], embed_model: str) -> list[float]:
     """Cosinus embeddingów odpowiedzi i wzorca (odpowiednik RAGAS answer_similarity)."""
     from langchain_openai import OpenAIEmbeddings
@@ -102,9 +77,7 @@ def compute_similarity(rows: list[dict], embed_model: str) -> list[float]:
     return sims
 
 
-# --------------------------------------------------------------------------- #
-# Liczenie metryk dla jednego przebiegu                                        #
-# --------------------------------------------------------------------------- #
+
 def score_run(path: Path, use_similarity: bool, embed_model: str) -> dict:
     rows = json.loads(path.read_text(encoding="utf-8"))["wyniki"]
     sims = compute_similarity(rows, embed_model) if use_similarity else [None] * len(rows)
@@ -131,9 +104,7 @@ def score_run(path: Path, use_similarity: bool, embed_model: str) -> dict:
     return {"ogolem": agg(rows), "zestawy": per_set}
 
 
-# --------------------------------------------------------------------------- #
-# Raport                                                                       #
-# --------------------------------------------------------------------------- #
+
 def write_report(results: dict, use_similarity: bool) -> None:
     OUT_DIR.mkdir(exist_ok=True)
     (OUT_DIR / "metryki.json").write_text(
